@@ -3,83 +3,60 @@
 namespace App\Http\Controllers;
 
 use App\Models\Serie;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class SerieController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function list(): JsonResponse
     {
-        //
+        $series = Serie::all();
+        return response()->json($series, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function find(Request $request): JsonResponse
     {
-        //
+        try {
+            $serie = Serie::findOrFail($request->serie);
+            return response()->json($serie, 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function create(Request $request): JsonResponse
     {
-        //
+        try {
+            $check = self::checkRequest(['name', 'release'], $request);
+            if (!$check)
+                return $check;
+            $serie = new Serie([
+                'name' => $request->name,
+                'release' => $request->release,
+                'rate' => !$request->rate ? null : $request->rate,
+                'evaluators' => !$request->evaluators ? null : $request->evaluators
+            ]);
+            if ($serie->save())
+                return response()->json($serie, 200);
+            return response()->json(['message' => "The application couldn't make new serie"], 500);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Serie  $serie
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Serie $serie)
+    public function update(Request $request): JsonResponse
     {
-        //
+        $serie = Serie::findOrFail($request->serie);
+        $serie->update($request);
+        $serie->save();
+        return response()->json(['message' => 'Serie was update.'], 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Serie  $serie
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Serie $serie)
+    public function destroy(Request $request): JsonResponse
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Serie  $serie
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Serie $serie)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Serie  $serie
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Serie $serie)
-    {
-        //
+        $serie = Serie::findOrFail($request->serie);
+        $serie->forceDelete();
+        return response()->json(['message' => 'Serie was delete.'], 200);
     }
 }
