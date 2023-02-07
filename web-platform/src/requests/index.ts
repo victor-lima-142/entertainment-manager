@@ -22,7 +22,7 @@ class Requests {
         const userData = getItem("userData");
         let parms = {};
         if (userData) parms = { ...parms, ...{ user: userData?.user, token: userData?.token } };
-        this.res = await axios.get(url, { params: { ...parms, ...body } });
+        this.res = await axios.delete(url, { params: { ...parms, ...body } });
     }
 
     async put(url: string, body: any = {}) {

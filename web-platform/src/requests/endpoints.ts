@@ -17,7 +17,7 @@ const endpoints = {
         edit: '/serie/edit',
         find: '/serie/find',
         delete: '/serie/delete',
-        list: '/serie/edit'
+        list: '/serie/list'
     }
 }
 
