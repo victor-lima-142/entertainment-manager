@@ -11,6 +11,13 @@ const endpoints = {
         sendValidCodePass: '/auth/sendValidCodePass',
         checkCode: '/auth/checkCode',
         resetForgotPassword: '/auth/resetForgotPassword'
+    },
+    serie: {
+        create: '/serie/create',
+        edit: '/serie/edit',
+        find: '/serie/find',
+        delete: '/serie/delete',
+        list: '/serie/edit'
     }
 }
 

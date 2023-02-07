@@ -1,7 +1,7 @@
 import { Navbar, Container, Nav, Offcanvas } from "react-bootstrap";
-import { BiLogIn, BiHomeAlt, BiLogOut } from 'react-icons/bi'
+import { BiLogIn, BiHomeAlt, BiLogOut, BiTv } from 'react-icons/bi'
 import AuthRequests from "../../../requests/auth";
-import { clearStorage, getItem } from "../../../config/storage";
+import { clearStorage } from "../../../config/storage";
 
 
 const MyNavbar = (props: any): JSX.Element => {
@@ -34,6 +34,9 @@ const MyNavbar = (props: any): JSX.Element => {
                         {location.pathname !== '/forgot-password' && <>
                             <span className="nav-link" title="home" onClick={() => navigate('/')}>
                                 <BiHomeAlt size={35} />
+                            </span>
+                            <span className="nav-link" title="home" onClick={() => navigate('/series')}>
+                                <BiTv size={35} />
                             </span>
                             {!logged && <span className="nav-link" title="login" onClick={() => navigate('/login')}>
                                 <BiLogIn size={35} />

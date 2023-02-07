@@ -12,11 +12,15 @@ class AuthController extends Controller
 {
     public function verifyUser(Request $request): JsonResponse
     {
-        $user = User::where("username", $request->username)->orWhere("email", $request->email)->first();
-        if (!$user)
-            return response()->json([], 404);
+        try {
+            $user = User::where("username", $request->username)->orWhere("email", $request->email)->first();
+            if (!$user)
+                return response()->json([], 404);
 
-        return response()->json(["user" => $user->id], 200);
+            return response()->json(["user" => $user->id], 200);
+        } catch (\Exception $e) {
+            return response()->json(["message" => "Internal server Error:" . $e->getMessage()], 500);
+        }
     }
 
     public function verifyPassword(Request $request): JsonResponse
