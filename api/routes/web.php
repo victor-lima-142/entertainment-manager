@@ -43,6 +43,6 @@ $router->group(["middleware" => "auth"], function () use ($router) {
         $router->post("/create", "SerieController@create");
         $router->put("/edit", "SerieController@edit");
         $router->get("/find", "SerieController@find");
-        $router->put("/list", "SerieController@list");
+        $router->get("/list", "SerieController@list");
     });
 });
