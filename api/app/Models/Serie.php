@@ -12,6 +12,8 @@ class Serie extends Model
         'name',
         'release',
         'rate',
+        'image',
+        'plot',
         'evaluators'
     ];
 
