@@ -1,0 +1,13 @@
+@import url("../../../global.scss");
+
+.serie-info-container {
+    margin-top: 115px;
+    > * {
+        color: var(--bs-light);
+    }
+}
+
+.serie-info-image {
+    width: 70% !important;
+    height: auto;
+}

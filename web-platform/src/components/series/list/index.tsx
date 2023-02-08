@@ -1,9 +1,10 @@
 import { Card, Carousel } from "react-bootstrap";
 import "./list.scss";
 import { BsStarFill } from 'react-icons/bs';
+import { NavigateFunction } from "react-router-dom";
 
 const SeriesList = (props: SeriesData): JSX.Element => {
-    const { list } = props;
+    const { list, navigate } = props;
 
     const getRate = (rate: number) => 5 * rate / 10;
 
@@ -19,7 +20,7 @@ const SeriesList = (props: SeriesData): JSX.Element => {
     return <div className='list-series-container'>
             {list.map((serie: any, index: any) => {
                 const { name, id, image, rate } = serie;
-                return <Card style={{ cursor: 'pointer' }} className="shadow-sm p-0 rounded-3 card-serie " key={index}>
+                return <Card onClick={() => navigate(`/serie-info/${id}`)} style={{ cursor: 'pointer' }} className="shadow-sm p-0 rounded-3 card-serie " key={index}>
                     <Carousel variant="dark" controls={false} indicators={false} className="rounded-3 shadow-sm ">
                         <Carousel.Item className="rounded-3 ">
                             <img className="d-block w-100 shadow-sm rounded-3 "
@@ -36,7 +37,8 @@ const SeriesList = (props: SeriesData): JSX.Element => {
 }
 
 interface SeriesData {
-    list: Array<object>
+    list: Array<object>,
+    navigate: NavigateFunction
 }
 
 export default SeriesList;

@@ -1,8 +1,6 @@
 import { Navbar, Container, Nav, Offcanvas, Image } from "react-bootstrap";
-import { BiLogIn, BiHomeAlt, BiLogOut, BiTv } from 'react-icons/bi'
 import AuthRequests from "../../../requests/auth";
 import { clearStorage } from "../../../config/storage";
-import React from "react";
 import { menuLogged, menuUnlogged } from "../../../config/app.structure";
 
 

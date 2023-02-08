@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import SerieRequests from "../../requests/serie";
-import { BreadCrumb, Loader, SeriesList } from "../../components";
+import { BreadCrumb, InfoSerie, Loader, SeriesList } from "../../components";
 import "./series.scss";
 import { breadcrumb } from "../../config/app.structure";
 
@@ -32,11 +32,10 @@ const Series = (props: any): JSX.Element => {
     if (loading || series === null)
         return <Loader size="md" variant="primary" className={'mt-5 pt-5'} />
 
-    const test = () => console.log("teste");
     return (
         <>
             <BreadCrumb itens={breadcrumb.series} navigate={navigate} />
-            <SeriesList list={series} />
+            <SeriesList navigate={navigate} list={series} />
         </>
     );
 }

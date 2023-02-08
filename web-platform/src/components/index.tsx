@@ -7,3 +7,4 @@ export { default as ResetPassword } from './auth/resetPassword';
 export { default as Loader } from './app/loader';
 export { default as BreadCrumb } from './app/breadcrumb';
 export { default as SeriesList } from './series/list';
+export { default as InfoSerie } from './series/info';
