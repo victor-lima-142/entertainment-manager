@@ -1,0 +1,27 @@
+.card-serie:hover {
+    transform: scale(0.989) !important;
+
+    .carousel-inner {
+        .carousel-item {
+            img {
+                filter: brightness(60%);
+            }
+        }
+    }
+}
+
+.card-serie {
+    transform: scale(0.989);
+    transition: .3s !important;
+
+    .carousel-inner {
+        .carousel-item {
+            img {
+                filter: brightness(70%);
+            }
+            .carousel-caption {
+                color: var(--bs-light);
+            }
+        }
+    }
+}

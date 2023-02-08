@@ -28,9 +28,7 @@ const App = (): JSX.Element => {
 
     return <>
         <Navigation {...{ navigate, location, logged, _setLogged, loading, setLoading }} />
-        <main className={currentPath === '' ? "" : "pt-4 mt-5"}>
-            <Router {...{ navigate, location, logged, _setLogged, loading, setLoading }} />
-        </main>
+        <Router {...{ navigate, location, logged, _setLogged, loading, setLoading }} />
     </>;
 }
 
