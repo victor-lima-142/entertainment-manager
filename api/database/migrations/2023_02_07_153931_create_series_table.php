@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('series', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('release');
+            $table->date('release')->nullable();
+            $table->string('image');
+            $table->longText('plot')->nullable();
             $table->integer('rate')->nullable();
             $table->integer('evaluators')->nullable();
             $table->timestamps();

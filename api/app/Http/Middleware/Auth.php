@@ -7,10 +7,11 @@ use App\Models\User;
 use Closure;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class Auth
 {
-    public function handle(Request $request, Closure $next):  JsonResponse | Closure
+    public function handle(Request $request, Closure $next):  JsonResponse | Closure | Response
     {
         $header = $request->header();
         $user_id = !$request->user ? $header['user'][0] : $request->user;

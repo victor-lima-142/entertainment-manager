@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Serie;
+use hmerritt\Imdb;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class SerieController extends Controller
     public function list(): JsonResponse
     {
         $series = Serie::all();
-        return response()->json($series, 200);
+        $imdb = new Imdb();
+        $id = $imdb->search("The Last Of Us")['titles'][0]['id'];
+        return response()->json($imdb->film($id), 200);
     }
 
     public function find(Request $request): JsonResponse
