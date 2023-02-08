@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import SerieRequests from "../../requests/serie";
-import { Loader, SeriesList } from "../../components";
+import { BreadCrumb, Loader, SeriesList } from "../../components";
 import "./series.scss";
+import { breadcrumb } from "../../config/app.structure";
+import { Button } from "react-bootstrap";
 
 const Series = (props: any): JSX.Element => {
     const [series, setSeries] = React.useState<any>(null);
-    const { logged, navigate, loading, setLoading } = props;
+    const { logged, navigate, loading, setLoading, location } = props;
 
     const fetchData = React.useCallback(async () => {
         try {
@@ -16,7 +18,7 @@ const Series = (props: any): JSX.Element => {
         } catch (e: any) {
             console.log(e);
         } finally {
-            setLoading(false);
+            setTimeout(() => setLoading(false), 1000)
         }
     }, [setSeries, setLoading]);
 
@@ -29,11 +31,13 @@ const Series = (props: any): JSX.Element => {
     }, [fetchData, logged, navigate]);
 
     if (loading || series === null)
-        return <Loader size="lg" variant="primary" fullScreen />
+        return <Loader size="md" variant="primary" className={'mt-5 pt-5'} />
 
     return (
         <>
-            <h1 className="text-center">Series</h1>
+            <BreadCrumb itens={breadcrumb.series} navigate={navigate}
+                button={<Button>Adicionar</Button>}
+            />
             <SeriesList list={series} />
         </>
     );

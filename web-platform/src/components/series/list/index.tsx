@@ -4,11 +4,10 @@ import { Card, Carousel, Container, Row } from "react-bootstrap";
 const SeriesList = (props: SeriesData): JSX.Element => {
     const { list } = props;
 
-    return <Container>
-        <Row style={{ gap: '10px' }}>
+    return <div className='list-series-container'>
             {list.map((serie: any, index: any) => {
                 const { name, release } = serie;
-                return <Card style={{ width: '18rem', cursor: 'pointer' }} className="shadow-sm p-0 rounded-3 card-serie border-0" key={index}>
+                return <Card style={{ cursor: 'pointer' }} className="shadow-sm p-0 rounded-3 card-serie border-0" key={index}>
                     <Carousel variant="dark" controls={false} indicators={false} className="rounded-3 shadow-sm border-0">
                         <Carousel.Item className="rounded-3 border-0">
                             <img className="d-block w-100 shadow-sm rounded-3 border-0"
@@ -20,8 +19,7 @@ const SeriesList = (props: SeriesData): JSX.Element => {
                     </Carousel>
                 </Card>
             })}
-        </Row>
-    </Container>
+        </div>
 }
 
 interface SeriesData {

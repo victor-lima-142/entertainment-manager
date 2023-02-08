@@ -1,26 +1,44 @@
-.card-serie:hover {
-    transform: scale(0.989) !important;
+.list-series-container {
+    margin: 0rem 15rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1%;
 
-    .carousel-inner {
-        .carousel-item {
-            img {
-                filter: brightness(60%);
+    .card-serie:hover {
+        transform: scale(0.989) !important;
+
+        .carousel-inner {
+            .carousel-item {
+                img {
+                    filter: brightness(40%);
+                }
             }
         }
     }
-}
 
-.card-serie {
-    transform: scale(0.989);
-    transition: .3s !important;
-
-    .carousel-inner {
-        .carousel-item {
-            img {
-                filter: brightness(70%);
-            }
-            .carousel-caption {
-                color: var(--bs-light);
+    .card-serie {
+        transform: scale(0.989);
+        transition: 0.3s !important;
+        width: 21%;
+        flex-wrap: wrap;
+        .carousel-inner {
+            .carousel-item {
+                img {
+                    filter: brightness(50%);
+                }
+                .carousel-caption {
+                    color: var(--bs-light);
+                    padding: 20% 0% 0% 0% !important;
+                    margin: 0px !important;
+                    
+                    h5 {
+                        padding: 20% 0% 0% 0% !important;
+                        font-size: smaller !important;
+                        margin: 0px !important;
+                    }
+                }
             }
         }
     }
