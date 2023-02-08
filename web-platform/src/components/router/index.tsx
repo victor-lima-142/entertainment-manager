@@ -5,7 +5,7 @@ import { Auth, Home, Series } from '../../pages';
 const MyRouter = (props: any) => {
     const { loading } = props;
     const getLoaderClass = () => document.querySelector("div.loader-container")?.classList.contains('fullScreen');
-    const classes = (loading) ? (!getLoaderClass()) ? 'mt-5 pt-4' : '' : 'mt-5 pt-4';
+    const classes = (loading) ? (!getLoaderClass()) ? 'with-top-space' : '' : 'with-top-space';
     return <section className={classes}>
         <Routes>
             <Route path='/login' element={<Auth { ...props} />} />

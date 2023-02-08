@@ -3,11 +3,10 @@ import SerieRequests from "../../requests/serie";
 import { BreadCrumb, Loader, SeriesList } from "../../components";
 import "./series.scss";
 import { breadcrumb } from "../../config/app.structure";
-import { Button } from "react-bootstrap";
 
 const Series = (props: any): JSX.Element => {
     const [series, setSeries] = React.useState<any>(null);
-    const { logged, navigate, loading, setLoading, location } = props;
+    const { logged, navigate, loading, setLoading } = props;
 
     const fetchData = React.useCallback(async () => {
         try {
@@ -33,11 +32,10 @@ const Series = (props: any): JSX.Element => {
     if (loading || series === null)
         return <Loader size="md" variant="primary" className={'mt-5 pt-5'} />
 
+    const test = () => console.log("teste");
     return (
         <>
-            <BreadCrumb itens={breadcrumb.series} navigate={navigate}
-                button={<Button>Adicionar</Button>}
-            />
+            <BreadCrumb itens={breadcrumb.series} navigate={navigate} button={{ label: "Add Serie", handleClickBtn: test }}/>
             <SeriesList list={series} />
         </>
     );

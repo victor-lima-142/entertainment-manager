@@ -1,12 +1,12 @@
-import React from 'react';
 import { Breadcrumb, Container, Button } from 'react-bootstrap';
 import "./breadcrumb.scss";
 import { NavigateFunction } from 'react-router-dom';
 
 const BreadCrumb = (props: BreadProps): JSX.Element => {
     const { itens, button, navigate } = props;
+    
 
-    return <Container>
+    return <Container className='bread-cont shadow' fluid>
         <div className='breadcrumb-container'>
             <Breadcrumb>
                 {itens.map((item: any, index: any) => {
@@ -18,7 +18,7 @@ const BreadCrumb = (props: BreadProps): JSX.Element => {
                 }
                 )}
             </Breadcrumb>
-            {button && button}
+            {(button) && <Button onClick={button.handleClickBtn}>{button.label}</Button>}
         </div>
 
     </Container>
@@ -26,8 +26,14 @@ const BreadCrumb = (props: BreadProps): JSX.Element => {
 
 interface BreadProps {
     itens: Array<object>,
-    button?: JSX.Element,
-    navigate: NavigateFunction
+    button?: ButtonBreadCrumbProps,
+    navigate: NavigateFunction,
+    loading?: boolean
+}
+
+interface ButtonBreadCrumbProps {
+    label: string,
+    handleClickBtn: React.MouseEventHandler
 }
 
 export default BreadCrumb;

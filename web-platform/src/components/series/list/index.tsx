@@ -1,5 +1,4 @@
-import React from 'react';
-import { Card, Carousel, Container, Row } from "react-bootstrap";
+import { Card, Carousel } from "react-bootstrap";
 import "./list.scss";
 
 const SeriesList = (props: SeriesData): JSX.Element => {

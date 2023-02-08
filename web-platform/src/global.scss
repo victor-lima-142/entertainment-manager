@@ -1,7 +1,22 @@
 @import "~bootstrap/scss/bootstrap";
 
+$navbar-height: 65px;
+$dark-color: #1B2665;
+$light-color: #F33362;
+
 .nav-link {
     cursor: pointer !important;
+    color: $light-color !important;
+    svg {
+        color: $light-color !important;
+    }
+}
+
+html, body, .root {
+    background-image: url('./assets/img/background.png') !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
 }
 
 span, h1, h2, h3, h5, h6, p, a, img, .no-select {
@@ -18,5 +33,17 @@ span, h1, h2, h3, h5, h6, p, a, img, .no-select {
     height: auto !important;
 }
 .my-navbar {
-    background: #f0f0f0;
+    background: $dark-color;
+    // background: #e4e3e3;
+    z-index: 15;
+    min-height: $navbar-height !important;
+    height: $navbar-height !important;
+}
+
+.container {
+    background-color: transparent;
+}
+
+.with-top-space {
+    margin-top: $navbar-height !important;
 }

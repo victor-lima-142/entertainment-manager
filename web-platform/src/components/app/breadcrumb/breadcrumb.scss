@@ -1,9 +1,13 @@
+@import "../../../global.scss";
+
 .breadcrumb-item {
     a {
         text-decoration: none !important;
-        color: var(--bs-dark);
+        color: $dark-color;
+        font-weight: 500;
     }
     &.active {
+        color: $dark-color;
         cursor: default !important;
         -webkit-touch-callout: none !important;
         -webkit-user-select: none !important;
@@ -12,16 +16,39 @@
         -ms-user-select: none !important;
         user-select: none !important;
     }
+    &.active::before {
+        color: $dark-color !important;
+    }
+}
+
+.bread-cont {
+    margin: 0px !important;
+    padding: 0px !important;
+    width: 100%;
 }
 
 .breadcrumb-container {
+    background-color: $light-color;
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-content: center;
-    margin: .8rem 2rem !important;
+    margin-bottom: 1rem !important;
+    padding-left: 20rem !important;
+    padding-right: 20rem !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: fixed;
+    z-index: 12;
+    width: 100%;
+    button {
+        background-color: $dark-color !important;
+        border-color: $dark-color !important;
+        color: $light-color;
+    }
 }
 ol.breadcrumb {
     align-items: center !important;
     margin-bottom: auto !important;
+    color: $dark-color;
 }
