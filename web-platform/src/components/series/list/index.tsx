@@ -1,19 +1,32 @@
 import { Card, Carousel } from "react-bootstrap";
 import "./list.scss";
+import { BsStarFill } from 'react-icons/bs';
 
 const SeriesList = (props: SeriesData): JSX.Element => {
     const { list } = props;
 
+    const getRate = (rate: number) => 5 * rate / 10;
+
+    const RenderRate = (rate: number) => {
+        let rates: Array<number> = []
+        for (let i = 0; i  < rate; i++) rates.push(i);
+        return <>
+            {rates.map((rate: any, index: any) => {
+                return <BsStarFill color="yellow" className="shadow-lg" size={15} key={index} />
+            })}
+        </>
+    }
     return <div className='list-series-container'>
             {list.map((serie: any, index: any) => {
-                const { name, id, image } = serie;
-                return <Card style={{ cursor: 'pointer' }} className="shadow-sm p-0 rounded-3 card-serie border-0" key={index}>
-                    <Carousel variant="dark" controls={false} indicators={false} className="rounded-3 shadow-sm border-0">
-                        <Carousel.Item className="rounded-3 border-0">
-                            <img className="d-block w-100 shadow-sm rounded-3 border-0"
+                const { name, id, image, rate } = serie;
+                return <Card style={{ cursor: 'pointer' }} className="shadow-sm p-0 rounded-3 card-serie " key={index}>
+                    <Carousel variant="dark" controls={false} indicators={false} className="rounded-3 shadow-sm ">
+                        <Carousel.Item className="rounded-3 ">
+                            <img className="d-block w-100 shadow-sm rounded-3 "
                                 src={image} alt={`serie-${name}-${id}}`} />
                             <Carousel.Caption>
                                 <h5>{name}</h5>
+                                <h6>{RenderRate(getRate(rate))}</h6>
                             </Carousel.Caption>
                         </Carousel.Item>
                     </Carousel>

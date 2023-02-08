@@ -1,3 +1,5 @@
+@import url("../../global.scss");
+
 .form-auth {
     border-radius: 25px;
     @media screen and (max-width: 768px) {
@@ -6,7 +8,9 @@
     @media screen and (min-width: 769px) {
         max-width: 25%;
     }
-    margin: 50px auto 0px auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 150px;
     text-align: center;
     padding: 20px 0px;
     background: #FFF;

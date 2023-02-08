@@ -1,5 +1,5 @@
 import React from "react";
-import { Login, Register, ResetPassword } from "../../components";
+import { BreadCrumb, Login, Register, ResetPassword } from "../../components";
 import { Col } from "react-bootstrap";
 import "./auth.scss";
 import AuthRequests from "../../requests/auth";
@@ -61,11 +61,14 @@ const Auth = (props: any): JSX.Element => {
 
     if (authMode === null) return <></>;
 
-    return <Col className="shadow form-auth">
-        {(authMode === 'login') && <Login {...props} {...{ _setAuthMode, username, _setUsername, password, _setPassword, login, setAuthMode }} />}
-        {(authMode === 'register') && <Register {...props} {...{ _setAuthMode, username, _setUsername, email, _setEmail, password, _setPassword, register }} />}
-        {(authMode === 'resetPassword') && <ResetPassword {...props} {...{ setAuthMode, username, _setUsername, email, _setEmail, password, _setPassword, register }} />}
-    </Col>
+    return <>
+        <BreadCrumb itens={[{ flag: 'Login', active: true }]} navigate={navigate} />
+        <Col className="shadow form-auth">
+            {(authMode === 'login') && <Login {...props} {...{ _setAuthMode, username, _setUsername, password, _setPassword, login, setAuthMode }} />}
+            {(authMode === 'register') && <Register {...props} {...{ _setAuthMode, username, _setUsername, email, _setEmail, password, _setPassword, register }} />}
+            {(authMode === 'resetPassword') && <ResetPassword {...props} {...{ setAuthMode, username, _setUsername, email, _setEmail, password, _setPassword, register }} />}
+        </Col>
+    </>
 }
 
 export default Auth;

@@ -3,6 +3,7 @@ import { BiLogIn, BiHomeAlt, BiLogOut, BiTv } from 'react-icons/bi'
 import AuthRequests from "../../../requests/auth";
 import { clearStorage } from "../../../config/storage";
 import React from "react";
+import { menuLogged, menuUnlogged } from "../../../config/app.structure";
 
 
 const MyNavbar = (props: any): JSX.Element => {
@@ -29,10 +30,15 @@ const MyNavbar = (props: any): JSX.Element => {
         }
     }
 
-    return <Navbar key={expand} expand={expand} className="shadow-sm my-navbar" fixed="top">
+    const MenuItem = (item: any) => <span className="nav-link" title="home" onClick={() => navigate(item.link)}>
+        {/* <BiHomeAlt size={35} /> */}
+        {item.flag}
+    </span>
+
+    return <Navbar key={expand} expand={expand} className="shadow my-navbar" fixed="top">
         <Container>
             <Navbar.Brand onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-                <Image src={require('../../../assets/img/logo.png')} className="universal-logo" />
+                <Image src={require('../../../assets/img/logo_name.png')} className="universal-logo" />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls={`navoffcanvas`} />
             <Navbar.Offcanvas id={`navoffcanvas`} aria-labelledby={`offcanvas-title`} placement="start">
@@ -44,18 +50,9 @@ const MyNavbar = (props: any): JSX.Element => {
                 <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
                         {location.pathname !== '/forgot-password' && <>
-                            <span className="nav-link" title="home" onClick={() => navigate('/')}>
-                                <BiHomeAlt size={35} />
-                            </span>
-                            <span className="nav-link" title="home" onClick={() => navigate('/series')}>
-                                <BiTv size={35} />
-                            </span>
-                            {!logged && <span className="nav-link" title="login" onClick={() => navigate('/login')}>
-                                <BiLogIn size={35} />
-                            </span>}
-                            {logged && <span className="nav-link" title="logout" onClick={logout}>
-                                <BiLogOut size={35} />
-                            </span>}
+                            {logged && menuLogged.map((item: any, index: any) => <MenuItem key={index} { ...item } />) }
+                            {!logged && menuUnlogged.map((item: any, index: any) => <MenuItem key={index} { ...item } />) }
+                            {logged && <span className="nav-link" title="logout" onClick={logout}>Logout</span>}
                         </>}
                         {location.pathname === '/forgot-password' && <>
                             <h1 className="fs-4">Reset Password</h1>

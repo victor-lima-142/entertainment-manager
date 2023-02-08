@@ -30,25 +30,39 @@
 .breadcrumb-container {
     background-color: $light-color;
     display: flex;
+    min-height: $breadcrumb-height;
+    max-height: $breadcrumb-height;
+    height: $breadcrumb-height;
     justify-content: space-between;
     align-items: center;
     align-content: center;
-    margin-bottom: 1rem !important;
-    padding-left: 20rem !important;
-    padding-right: 20rem !important;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: fixed;
+    margin-top: $navbar-height;
+    padding: .7rem 20rem !important;
+    position: fixed !important;
+    top: 0;
     z-index: 12;
     width: 100%;
-    button {
-        background-color: $dark-color !important;
-        border-color: $dark-color !important;
-        color: $light-color;
-    }
 }
 ol.breadcrumb {
     align-items: center !important;
     margin-bottom: auto !important;
     color: $dark-color;
+}
+
+.breadcrumb-container-single {
+    background-color: $light-color;
+    display: flex;
+    min-height: $breadcrumb-height;
+    max-height: $breadcrumb-height;
+    height: $breadcrumb-height;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    margin-top: $navbar-height;
+    padding: .7rem 20rem !important;
+    position: fixed !important;
+    top: 0;
+    z-index: 12;
+    width: 100%;
 }

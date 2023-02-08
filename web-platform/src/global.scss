@@ -1,22 +1,33 @@
 @import "~bootstrap/scss/bootstrap";
 
 $navbar-height: 65px;
-$dark-color: #1B2665;
-$light-color: #F33362;
+$light-color: var(--bs-dark);
+$dark-color: var(--bs-light);
+$breadcrumb-height: 35px;
+$margin-top-global: calc($navbar-height + $breadcrumb-height);
 
 .nav-link {
     cursor: pointer !important;
-    color: $light-color !important;
+    color: $light-color;
     svg {
-        color: $light-color !important;
+        color: $light-color;
+    }
+
+    @media screen and (max-width: 798px) {
+        color: $dark-color;
+    svg {
+        color: $dark-color;
+    }
     }
 }
 
 html, body, .root {
     background-image: url('./assets/img/background.png') !important;
+    // background-color: var(--bs-black);
     background-position: center !important;
     background-repeat: no-repeat !important;
-    background-size: cover !important;
+    background-size:auto !important;
+    background-attachment: fixed;
 }
 
 span, h1, h2, h3, h5, h6, p, a, img, .no-select {
@@ -29,7 +40,7 @@ span, h1, h2, h3, h5, h6, p, a, img, .no-select {
 }
 
 .universal-logo {
-    width: 40px !important;
+    width: 138px !important;
     height: auto !important;
 }
 .my-navbar {
