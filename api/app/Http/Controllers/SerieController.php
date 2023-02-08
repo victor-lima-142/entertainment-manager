@@ -13,9 +13,7 @@ class SerieController extends Controller
     public function list(): JsonResponse
     {
         $series = Serie::all();
-        $imdb = new Imdb();
-        $id = $imdb->search("The Last Of Us")['titles'][0]['id'];
-        return response()->json($imdb->film($id), 200);
+        return response()->json($series, 200);
     }
 
     public function find(Request $request): JsonResponse

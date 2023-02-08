@@ -42,7 +42,7 @@ class SerieSeeder extends Seeder
                 $serieData = $imdb->film($data['titles'][0]['id']);
                 $serie = new Serie([
                     'name' => $serieData['title'],
-                    'image' => $serieData['poster'],
+                    'image' => $data['titles'][0]['image'],
                     'plot' => $serieData['plot'],
                     'rate' => $serieData['rating']
                 ]);
