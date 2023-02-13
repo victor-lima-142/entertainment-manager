@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('series', function (Blueprint $table) {
+        Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->date('release')->nullable();
-            $table->string('image');
-            $table->longText('plot')->nullable();
-            $table->integer('rate')->nullable();
-            $table->integer('evaluators')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('series');
+        Schema::dropIfExists('likes');
     }
 };

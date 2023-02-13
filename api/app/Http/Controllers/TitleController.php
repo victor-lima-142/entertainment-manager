@@ -7,7 +7,7 @@ use hmerritt\Imdb;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class SerieController extends Controller
+class TitleController extends Controller
 {
 
     public function list(): JsonResponse
