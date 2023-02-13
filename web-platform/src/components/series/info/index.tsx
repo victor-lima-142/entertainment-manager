@@ -6,7 +6,7 @@ import SerieRequests from '../../../requests/serie';
 import { useParams } from 'react-router-dom';
 import Loader from '../../app/loader';
 import "./info.scss";
-import { BsStarFill } from 'react-icons/bs';
+import { BsStarFill, BsStarHalf } from 'react-icons/bs';
 
 const InfoSerie = (props: any) => {
     const [data, setData] = React.useState<any>(null);
@@ -39,37 +39,41 @@ const InfoSerie = (props: any) => {
 
     const RenderRate = () => {
         let rates: Array<number> = []
-        const limit = 5 * rate / 10;
+        const limit: number = 5 * rate / 10 | 0;
         for (let i = 0; i < limit; i++) rates.push(i);
-        return <>
-            {rates.map((rate: any, index: any) => {
-                return <BsStarFill color="yellow" className="shadow-lg" size={15} key={index} />
-            })}
-            <h6>{limit}</h6>
-        </>
+
+        return <div className='serie-info-rate'>
+            <>
+                {rates.map((rate: any, index: any) => {
+                    return <BsStarFill color="yellow" size={15} key={index} />
+                })}
+                {isFloat(5 * rate / 10) && <BsStarHalf color="yellow" size={15} />}
+            </>
+            <h6 className='text-shadow'>{5 * rate / 10}</h6>
+        </div>
     }
 
     return <>
-        <BreadCrumb itens={breadcrumb.infoSerie} navigate={navigate} />
-        <Container className='serie-info-container'>
-            <Row>
-                <Col md={6} lg={6} sm={12}>
-                    <Image src={data.image} className='serie-info-image' />
-                </Col>
-                <Col md={6} lg={6} sm={12}>
-                    <Row>
-                        <Col md={6} lg={6} sm={12}>
-                            <h1>{data.name}</h1>
-                        </Col>
-                        <Col md={6} lg={6} sm={12}>
-                            <RenderRate />
-                        </Col>
-                    </Row>
-                    <p>{data.plot}</p>
-                </Col>
-            </Row>
+        <BreadCrumb itens={[{ flag: data.name, active: true }]} navigate={navigate} />
+        <Container className='serie-info-container mt-5 pt-5 image-back text-white' fluid>
+            <Container>
+                <Row>
+                    <Col md={6} lg={6} sm={12}>
+                        <Image src={data.image} className='serie-info-image shadow' />
+                    </Col>
+                    <Col md={6} lg={6} sm={12}>
+                        <h1 className='mb-0 text-shadow text-black'>{data.name}</h1>
+                        <RenderRate />
+                        <h4 className='serie-info-plot'>{data.plot}</h4>
+                    </Col>
+                </Row>
+            </Container>
         </Container>
     </>
+}
+
+function isFloat(n: number) {
+    return n === +n && n !== (n | 0);
 }
 
 export default InfoSerie;

@@ -6,7 +6,6 @@ const Home = (props: any): JSX.Element => {
     return <>
         <BreadCrumb itens={breadcrumb.home} navigate={navigate} />
         <Banner />
-        <h1>Olá mundo</h1>
     </>
 }
 

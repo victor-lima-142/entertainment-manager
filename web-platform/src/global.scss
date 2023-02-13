@@ -1,6 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 $navbar-height: 65px;
+$navbar-sm-height: 80px;
 $light-color: var(--bs-dark);
 $dark-color: var(--bs-light);
 $breadcrumb-height: 35px;
@@ -15,22 +16,48 @@ $margin-top-global: calc($navbar-height + $breadcrumb-height);
 
     @media screen and (max-width: 798px) {
         color: $dark-color;
-    svg {
-        color: $dark-color;
-    }
+        svg {
+            color: $dark-color;
+        }
     }
 }
 
-html, body, .root {
-    background-image: url('./assets/img/background.png') !important;
-    // background-color: var(--bs-black);
+div,
+section,
+#root,
+html,
+body {
     background-position: center !important;
     background-repeat: no-repeat !important;
-    background-size:auto !important;
+    background-size: auto !important;
     background-attachment: fixed;
 }
 
-span, h1, h2, h3, h5, h6, p, a, img, .no-select {
+.image-back {
+    background-image: url("./assets/img/background.png") !important;
+    min-height: 100vh !important;
+}
+
+.dark-back {
+    background-color: var(--bs-dark) !important;
+    min-height: 100vh !important;
+}
+
+.light-back {
+    background-color: var(--bs-gray-700) !important;
+    min-height: 100vh !important;
+}
+
+span,
+h1,
+h2,
+h3,
+h5,
+h6,
+p,
+a,
+img,
+.no-select {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -45,10 +72,15 @@ span, h1, h2, h3, h5, h6, p, a, img, .no-select {
 }
 .my-navbar {
     background: $dark-color;
-    // background: #e4e3e3;
     z-index: 15;
-    min-height: $navbar-height !important;
-    height: $navbar-height !important;
+    min-height: $navbar-height;
+    max-height: $navbar-height;
+    height: $navbar-height;
+    @media screen and (max-width: 1020px) {
+        min-height: $navbar-sm-height;
+        max-height: $navbar-sm-height;
+        height: $navbar-sm-height;
+    }
 }
 
 .container {
@@ -57,4 +89,8 @@ span, h1, h2, h3, h5, h6, p, a, img, .no-select {
 
 .with-top-space {
     margin-top: $navbar-height !important;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px var(--bs-dark);
 }

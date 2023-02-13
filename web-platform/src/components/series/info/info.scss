@@ -1,13 +1,46 @@
 @import url("../../../global.scss");
 
 .serie-info-container {
-    margin-top: 115px;
-    > * {
-        color: var(--bs-light);
+    .row {
+        .col-sm-12 {
+            @media screen and (max-width: 793px) {
+                text-align: center !important;
+            }
+        }
     }
+
+    h1 {
+        font-size: 5em;
+    }
+
+    width: 100% !important;
+    margin: 0px;
+    padding: 0px;
 }
 
 .serie-info-image {
     width: 70% !important;
     height: auto;
+    border-radius: 25px;
+}
+
+.serie-info-plot {
+    font-weight: 200 !important;
+    text-align: justify;
+}
+
+.serie-info-rate {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    svg {
+        box-shadow: 0 0.5rem 1rem #00000051 !important;
+    }
+    h6 {
+        margin: 0px 15px;
+    }
 }
