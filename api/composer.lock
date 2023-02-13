@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f037cc3ba17e3abf85ccf65e81f7853",
+    "content-hash": "aa7405e6905b0ce4536eedb99160368b",
     "packages": [
         {
             "name": "brick/math",
@@ -2719,6 +2719,44 @@
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2023-02-01T03:39:02+00:00"
+        },
+        {
+            "name": "imdbphp/imdbphp",
+            "version": "v3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tboothman/imdbphp.git",
+                "reference": "fbdded6feff49671d6c97c729c76e38a20ed1c1c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tboothman/imdbphp/zipball/fbdded6feff49671d6c97c729c76e38a20ed1c1c",
+                "reference": "fbdded6feff49671d6c97c729c76e38a20ed1c1c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">5.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "description": "Library for retrieving film and tv information from IMDb",
+            "support": {
+                "issues": "https://github.com/tboothman/imdbphp/issues",
+                "source": "https://github.com/tboothman/imdbphp/tree/master"
+            },
+            "time": "2016-04-17T13:42:04+00:00"
         },
         {
             "name": "laravel/lumen-framework",
