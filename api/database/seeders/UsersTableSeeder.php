@@ -16,6 +16,13 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        $userAdmin = new User([
+            'username' => 'victor-lima-142',
+            'email' => 'victoreboredo@gmail.com',
+            'password' => Hash::make('@Tu40028922'),
+            'level' => 5
+        ]);
+        $userAdmin->save();
         for ($i = 0; $i < 38; $i++) {
             $faker = Factory::create();
             $faker->name();

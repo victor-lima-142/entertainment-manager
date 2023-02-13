@@ -39,10 +39,10 @@ $router->group(["middleware" => "auth"], function () use ($router) {
      * Series routes
      */
     $router->group(["prefix" => "serie"], function () use ($router) {
-        $router->delete("/delete", "SerieController@delete");
-        $router->post("/create", "SerieController@create");
-        $router->put("/edit", "SerieController@edit");
-        $router->get("/find", "SerieController@find");
-        $router->get("/list", "SerieController@list");
+        $router->delete("/delete", "TitleController@delete");
+        $router->post("/create", "TitleController@create");
+        $router->put("/edit", "TitleController@edit");
+        $router->get("/find", "TitleController@find");
+        $router->get("/list", "TitleController@list");
     });
 });
