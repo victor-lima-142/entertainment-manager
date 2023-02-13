@@ -26,4 +26,12 @@ class Title extends Model
     public function season() {
         return $this->hasMany('Season', 'serie_id');
     }
+
+    public function like() {
+        return $this->belongsTo('Like', 'title_id');
+    }
+
+    public function genderTitle() {
+        return $this->belongsTo('GenderTitle', 'title_id');
+    }
 }
