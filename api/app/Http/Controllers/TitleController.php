@@ -3,16 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Title;
-use hmerritt\Imdb;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TitleController extends Controller
 {
 
-    public function list(): JsonResponse
+    public function list(Request $request): JsonResponse
     {
-        $titles = Title::all();
+        $hasId = $request->id;
+        if ($request->type) {
+            if ($request->type === 'game') {
+                $titles = Title::getGame(($hasId) ? $hasId : null);
+            } elseif ($request->type === 'movie') {
+                $titles = Title::getMovie(($hasId) ? $hasId : null);
+            } else {
+                $titles = Title::getSerie(($hasId) ? $hasId : null);
+            }
+        } else {
+            $titles = Title::all();
+        }
         return response()->json($titles, 200);
     }
 
@@ -36,6 +46,7 @@ class TitleController extends Controller
                 'name' => $request->name,
                 'release' => $request->release,
                 'rate' => !$request->rate ? null : $request->rate,
+                'type' => $request->type,
                 'evaluators' => !$request->evaluators ? null : $request->evaluators
             ]);
             if ($title->save())
