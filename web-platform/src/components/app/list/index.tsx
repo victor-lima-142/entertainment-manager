@@ -4,8 +4,10 @@ import { BsStarFill } from 'react-icons/bs';
 import { NavigateFunction } from "react-router-dom";
 import { getItem } from "../../../config/storage";
 import { Modal } from "../..";
+import React from "react";
 
 const List = (props: SeriesData): JSX.Element => {
+    const [open, setOpen] = React.useState<boolean>(false);
     const { list, navigate } = props;
 
     const getRate = (rate: number) => 5 * rate / 10;
@@ -24,10 +26,11 @@ const List = (props: SeriesData): JSX.Element => {
         if (getItem('userData')) {
             navigate(`/title-info/${id}`)
         } else {
-            <Modal title={'Faça o Login'} open body={<h2>Para continuar efetue o Login</h2>} />
+            setOpen(true);
         }
     }
 
+    const closeModalAlert = () => setOpen(false);
     return <div className='list-titles-container'>
             {list.map((title: any, index: any) => {
                 const { name, id, image, rate } = title;
@@ -44,6 +47,7 @@ const List = (props: SeriesData): JSX.Element => {
                     </Carousel>
                 </Card>
             })}
+            <Modal title={'Faça o Login'} align={'center'} open={open} onClose={closeModalAlert} body={<h2>Para continuar efetue o Login</h2>} />
         </div>
 }
 

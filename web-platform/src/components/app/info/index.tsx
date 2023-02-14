@@ -26,7 +26,7 @@ const InfoTitle = (props: any) => {
         } finally {
             setTimeout(() => setLoading(false), 1000)
         }
-    }, []);
+    }, [setLoading, titleId]);
 
     React.useEffect(() => {
         fetchData();
