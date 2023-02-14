@@ -20,9 +20,13 @@ $router->group(["prefix" => "auth"], function () use ($router) {
     $router->post('/resetForgotPassword', 'AuthMailController@resetForgotPassword');
 });
 
+$router->group(["prefix" => "title"], function () use ($router) {
+    $router->get("/list", "TitleController@list");
+});
+
 $router->group(["middleware" => "auth"], function () use ($router) {
     $router->get("/", "TokenController@index");
-    
+
 
     /**
      * User routes
@@ -33,7 +37,8 @@ $router->group(["middleware" => "auth"], function () use ($router) {
         $router->put("/edit", "UserController@edit");
         $router->get("/find", "UserController@find");
         $router->put("/resetPassword", "AuthController@resetPassword");
-    });
+    }
+    );
 
     /**
      * Series routes
@@ -43,6 +48,6 @@ $router->group(["middleware" => "auth"], function () use ($router) {
         $router->post("/create", "TitleController@create");
         $router->put("/edit", "TitleController@edit");
         $router->get("/find", "TitleController@find");
-        $router->get("/list", "TitleController@list");
-    });
+    }
+    );
 });
