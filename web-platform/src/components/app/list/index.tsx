@@ -2,8 +2,10 @@ import { Card, Carousel } from "react-bootstrap";
 import "./list.scss";
 import { BsStarFill } from 'react-icons/bs';
 import { NavigateFunction } from "react-router-dom";
+import { getItem } from "../../../config/storage";
+import { Modal } from "../..";
 
-const SeriesList = (props: SeriesData): JSX.Element => {
+const List = (props: SeriesData): JSX.Element => {
     const { list, navigate } = props;
 
     const getRate = (rate: number) => 5 * rate / 10;
@@ -17,14 +19,23 @@ const SeriesList = (props: SeriesData): JSX.Element => {
             })}
         </>
     }
-    return <div className='list-series-container'>
-            {list.map((serie: any, index: any) => {
-                const { name, id, image, rate } = serie;
-                return <Card onClick={() => navigate(`/serie-info/${id}`)} style={{ cursor: 'pointer' }} className="shadow-sm p-0 rounded-3 card-serie " key={index}>
+
+    const onHandle = (id: number) => {
+        if (getItem('userData')) {
+            navigate(`/title-info/${id}`)
+        } else {
+            <Modal title={'Faça o Login'} open body={<h2>Para continuar efetue o Login</h2>} />
+        }
+    }
+
+    return <div className='list-titles-container'>
+            {list.map((title: any, index: any) => {
+                const { name, id, image, rate } = title;
+                return <Card onClick={() => onHandle(id)} style={{ cursor: 'pointer' }} className="shadow-sm p-0 rounded-3 card-title " key={index}>
                     <Carousel variant="dark" controls={false} indicators={false} className="rounded-3 shadow-sm ">
                         <Carousel.Item className="rounded-3 ">
                             <img className="d-block w-100 shadow-sm rounded-3 "
-                                src={image} alt={`serie-${name}-${id}}`} />
+                                src={image} alt={`title-${name}-${id}}`} />
                             <Carousel.Caption>
                                 <h5>{name}</h5>
                                 <h6>{RenderRate(getRate(rate))}</h6>
@@ -41,4 +52,4 @@ interface SeriesData {
     navigate: NavigateFunction
 }
 
-export default SeriesList;
+export default List;

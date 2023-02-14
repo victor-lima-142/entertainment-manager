@@ -6,6 +6,14 @@ export const breadcrumb = {
         { flag: 'Home', route: '/' },
         { flag: 'Series', active: true }
     ],
+    games: [
+        { flag: 'Home', route: '/' },
+        { flag: 'Games', active: true }
+    ],
+    movies: [
+        { flag: 'Home', route: '/' },
+        { flag: 'Movies', active: true }
+    ],
     infoSerie: [
         { flag: 'Home', route: '/', active: false },
         { flag: 'Series', route: '/series', active: false }
@@ -20,6 +28,14 @@ export const menuLogged = [
     {
         flag: 'Series',
         link: '/series'
+    },
+    {
+        flag: 'Movies',
+        link: '/movies'
+    },
+    {
+        flag: 'Games',
+        link: '/games'
     }
 ]
 
@@ -27,6 +43,18 @@ export const menuUnlogged = [
     {
         flag: 'Home',
         link: '/'
+    },
+    {
+        flag: 'Series',
+        link: '/series'
+    },
+    {
+        flag: 'Movies',
+        link: '/movies'
+    },
+    {
+        flag: 'Games',
+        link: '/games'
     },
     {
         flag: 'Login',

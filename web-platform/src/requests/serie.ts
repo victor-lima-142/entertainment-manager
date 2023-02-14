@@ -1,31 +1,31 @@
 import Requests from ".";
 import endpoints from "./endpoints";
 
-class SerieRequests extends Requests {
+class TitleRequest extends Requests {
     async create(body?: any) {
-        await this.post(endpoints.serie.create, body);
+        await this.post(endpoints.title.create, body);
         return this.res;
     }
 
     async edit(body?: any) {
-        await this.put(endpoints.serie.edit, body);
+        await this.put(endpoints.title.edit, body);
         return this.res;
     }
 
     async find(body?: any) {
-        await this.get(endpoints.serie.find, body);
+        await this.get(endpoints.title.find, body);
         return this.res;
     }
 
     async deleteSerie(body?: any) {
-        await this.delete(endpoints.serie.delete, body);
+        await this.delete(endpoints.title.delete, body);
         return this.res;
     }
 
     async list(body?: any) {
-        await this.get(endpoints.serie.list, body);
+        await this.get(endpoints.title.list, body);
         return this.res;
     }
 }
 
-export default SerieRequests;
+export default TitleRequest;

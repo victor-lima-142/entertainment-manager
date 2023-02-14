@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
-import SerieRequests from "../../requests/serie";
 import { BreadCrumb, Loader, List } from "../../components";
-import "./series.scss";
+import "./movies.scss";
 import { breadcrumb } from "../../config/app.structure";
+import TitleRequest from "../../requests/serie";
 
-const Series = (props: any): JSX.Element => {
-    const [series, setSeries] = React.useState<any>(null);
+const Movies = (props: any): JSX.Element => {
+    const [movies, setSeries] = React.useState<any>(null);
     const { navigate, loading, setLoading } = props;
 
     const fetchData = React.useCallback(async () => {
         try {
             setLoading(true);
-            const serieRequests = new SerieRequests();
-            const res = await serieRequests.list({ type: 'serie' });
+            const titleRequest = new TitleRequest();
+            const res = await titleRequest.list({ type: 'movie' });
             if (res?.status === 200) setSeries(res?.data);
         } catch (e: any) {
             console.log(e);
@@ -25,15 +25,15 @@ const Series = (props: any): JSX.Element => {
         fetchData();
     }, [fetchData]);
 
-    if (loading || series === null)
+    if (loading || movies === null)
         return <Loader size="md" variant="primary" className={'mt-5 pt-5'} />
 
     return (
         <>
-            <BreadCrumb itens={breadcrumb.series} navigate={navigate} />
-            <List navigate={navigate} list={series} />
+            <BreadCrumb itens={breadcrumb.movies} navigate={navigate} />
+            <List navigate={navigate} list={movies} />
         </>
     );
 }
-// setSeries, setLoading
-export default Series;
+
+export default Movies;

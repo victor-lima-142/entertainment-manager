@@ -1,6 +1,6 @@
 @import url("../../../global.scss");
 
-.serie-info-container {
+.title-info-container {
     .row {
         .col-sm-12 {
             @media screen and (max-width: 793px) {
@@ -18,18 +18,18 @@
     padding: 0px;
 }
 
-.serie-info-image {
+.title-info-image {
     width: 70% !important;
     height: auto;
     border-radius: 25px;
 }
 
-.serie-info-plot {
+.title-info-plot {
     font-weight: 200 !important;
     text-align: justify;
 }
 
-.serie-info-rate {
+.title-info-rate {
     margin-top: 20px;
     margin-bottom: 10px;
     display: flex;

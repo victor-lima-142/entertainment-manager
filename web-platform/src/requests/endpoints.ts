@@ -12,12 +12,12 @@ const endpoints = {
         checkCode: '/auth/checkCode',
         resetForgotPassword: '/auth/resetForgotPassword'
     },
-    serie: {
-        create: '/serie/create',
-        edit: '/serie/edit',
-        find: '/serie/find',
-        delete: '/serie/delete',
-        list: '/serie/list'
+    title: {
+        create: '/title/create',
+        edit: '/title/edit',
+        find: '/title/find',
+        delete: '/title/delete',
+        list: '/title/list'
     }
 }
 

@@ -1,6 +1,6 @@
 @import url("../../../global.scss");
 
-.list-series-container {
+.list-titles-container {
     margin: 0rem 8rem;
     display: flex;
     flex-direction: row;
@@ -14,7 +14,7 @@
         padding: 0px !important;
         border: none;
     }
-    .card-serie:hover {
+    .card-title:hover {
         transform: scale(0.989) !important;
 
         .carousel-inner {
@@ -26,10 +26,10 @@
         }
     }
 
-    .card-serie {
+    .card-title {
         transform: scale(0.989);
         transition: 0.3s !important;
-        min-width: 18%;
+        width: 19% !important;
         margin: 10px 0px !important;
         * {
             border: none;
@@ -50,6 +50,7 @@
                     padding: 0px !important;
                     margin-left: -15% !important;
                     h5 {
+                        line-break: 'anywhere' !important;
                         font-size: larger !important;
                         margin: 0px !important;
                     }
