@@ -18,30 +18,40 @@ class TitleSeeder extends Seeder
     {
         $imdb = new Imdb();
         $seriesName = [
-            "The Last Of Us",
-            "Grey's Anatomy",
-            "Breaking Bad",
-            "Rick and Morty",
-            "The Last Kingdom",
-            "Doctor House",
-            "Once Upon A Time",
-            "The White Lotus",
-            "Loki",
-            "WandaVision",
-            "Arrow",
-            "Scandal",
-            "Peaky Blinders",
-            "Vikings",
-            "Friends",
-            "Brooklyn Nine-Nine",
-            "Orange Is The New Black",
-            "Jurassic Park",
-            "Star Wars",
-            "Harry Potter",
-            "Pirates of the caribbean",
-            "High School Musical",
+            "The Last Of Us" => 'serie',
+            "Grey's Anatomy" => 'serie',
+            "Breaking Bad" => 'serie',
+            "Rick and Morty" => 'serie',
+            "The Last Kingdom" => 'serie',
+            "Doctor House" => 'serie',
+            "Once Upon A Time" => 'serie',
+            "The White Lotus" => 'serie',
+            "Loki" => 'serie',
+            "WandaVision" => 'serie',
+            "Arrow" => 'serie',
+            "Scandal" => 'serie',
+            "Peaky Blinders" => 'serie',
+            "Vikings" => 'serie',
+            "Friends" => 'serie',
+            "Brooklyn Nine-Nine" => 'serie',
+            "Orange Is The New Black" => 'serie',
+            "Jurassic Park" => 'movie',
+            "The Godfather" => 'movie',
+            "King Richard" => 'movie',
+            "Dune" => 'movie',
+            "Black Adam" => 'movie',
+            "The Batman" => 'movie',
+            "Star Wars" => 'movie',
+            "Harry Potter" => 'movie',
+            "Pirates of the caribbean" => 'movie',
+            "High School Musical" => 'movie',
+            "Ben 10" => 'serie',
+            "Uncharted" => 'game',
+            "Grand Theft Auto" => 'game',
+            "GTA" => 'game',
+            "FIFA" => 'game',
         ];
-        foreach ($seriesName as $name) {
+        foreach ($seriesName as $name => $type) {
             try {
                 $data = $imdb->search($name);
                 $titles = $data['titles'];
@@ -52,7 +62,8 @@ class TitleSeeder extends Seeder
                         'name' => $titleData['title'],
                         'image' => $titleData['poster'],
                         'plot' => $titleData['plot'],
-                        'rate' => $titleData['rating'] ? $titleData['rating'] : 7
+                        'rate' => $titleData['rating'] ? $titleData['rating'] : 7,
+                        'type' => $type
                     ]);
                     $newTitle->save();
                 }

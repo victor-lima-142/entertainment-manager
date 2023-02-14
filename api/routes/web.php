@@ -38,7 +38,7 @@ $router->group(["middleware" => "auth"], function () use ($router) {
     /**
      * Series routes
      */
-    $router->group(["prefix" => "serie"], function () use ($router) {
+    $router->group(["prefix" => "title"], function () use ($router) {
         $router->delete("/delete", "TitleController@delete");
         $router->post("/create", "TitleController@create");
         $router->put("/edit", "TitleController@edit");
