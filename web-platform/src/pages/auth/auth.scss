@@ -13,8 +13,8 @@
     margin-top: 150px;
     text-align: center;
     padding: 20px 0px;
-    background: #FFF;
-    // background: var(--bs-gray-300);
+    background: #fff;
+
     > * {
         margin: 0px;
         padding: 0px;
@@ -27,7 +27,8 @@
     }
 
     form {
-        input, .form-group {
+        input,
+        .form-group {
             width: 80%;
             margin: 20px auto;
             @media screen and (max-width: 768px) {

@@ -5,7 +5,8 @@ import { useParams } from 'react-router-dom';
 import Loader from '../loader';
 import "./info.scss";
 import { BsStarFill, BsStarHalf } from 'react-icons/bs';
-import TitleRequest from '../../../requests/serie';
+import TitleRequest from '../../../requests/title';
+import { capitalize } from '../../../config/utils';
 
 const InfoTitle = (props: any) => {
     const [data, setData] = React.useState<any>(null);
@@ -19,6 +20,7 @@ const InfoTitle = (props: any) => {
             const titleRequest = new TitleRequest();
             const res = await titleRequest.find({ title: titleId });
             if (res?.status === 200) {
+                console.log(res);
                 setData(res?.data);
             }
         } catch (e: any) {
@@ -53,7 +55,10 @@ const InfoTitle = (props: any) => {
     }
 
     return <>
-        <BreadCrumb itens={[{ flag: data.name, active: true }]} navigate={navigate} />
+        <BreadCrumb itens={[
+            { flag: `${capitalize(data.type)}s`, route: `/${data.type}s` },
+            { flag: data.name, active: true }
+        ]} navigate={navigate} />
         <Container className='title-info-container mt-5 pt-5 image-back text-white' fluid>
             <Container>
                 <Row>
@@ -61,9 +66,9 @@ const InfoTitle = (props: any) => {
                         <Image src={data.image} className='title-info-image shadow' />
                     </Col>
                     <Col md={6} lg={6} sm={12}>
-                        <h1 className='mb-0 text-shadow text-black'>{data.name}</h1>
+                        <h1 className='mb-0 text-secondary fs-2'>{data.name}</h1>
                         <RenderRate />
-                        <h4 className='title-info-plot'>{data.plot}</h4>
+                        <h4 className='title-info-plot fs-5 text-shadow'>{data.plot}</h4>
                     </Col>
                 </Row>
             </Container>

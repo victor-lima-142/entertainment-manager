@@ -49,7 +49,16 @@ class TitleSeeder extends Seeder
             "Uncharted" => 'game',
             "Grand Theft Auto" => 'game',
             "GTA" => 'game',
-            "FIFA" => 'game',
+            "Assassin's Creed" => 'game',
+            "Call Of Duty" => 'game',
+            "Pro Evolution Soccer" => 'game',
+            "Pay Day" => 'game',
+            "Far Cry" => 'game',
+            "League Of Legends" => 'game',
+            "Batman Arkham" => 'game',
+            "Battlefield" => 'game',
+            "NBA 2k" => 'game',
+            "Scooby Doo" => 'serie',
         ];
         foreach ($seriesName as $name => $type) {
             try {

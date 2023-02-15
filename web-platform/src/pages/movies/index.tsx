@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { BreadCrumb, Loader, List } from "../../components";
 import "./movies.scss";
 import { breadcrumb } from "../../config/app.structure";
-import TitleRequest from "../../requests/serie";
+import TitleRequest from "../../requests/title";
 
 const Movies = (props: any): JSX.Element => {
     const [movies, setSeries] = React.useState<any>(null);
-    const { navigate, loading, setLoading } = props;
+    const { navigate, loading, setLoading, location } = props;
 
     const fetchData = React.useCallback(async () => {
         try {
@@ -25,13 +25,13 @@ const Movies = (props: any): JSX.Element => {
         fetchData();
     }, [fetchData]);
 
-    if (loading || movies === null)
-        return <Loader size="md" variant="primary" className={'mt-5 pt-5'} />
-
     return (
         <>
             <BreadCrumb itens={breadcrumb.movies} navigate={navigate} />
-            <List navigate={navigate} list={movies} />
+            {
+                (loading || movies === null) ? <Loader size="md" className={'mt-5 pt-5'} /> :
+                    <List location={location} props={props} navigate={navigate} list={movies} />
+            }
         </>
     );
 }

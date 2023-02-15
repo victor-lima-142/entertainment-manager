@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import SerieRequests from "../../requests/serie";
+import SerieRequests from "../../requests/title";
 import { BreadCrumb, Loader, List } from "../../components";
 import "./series.scss";
 import { breadcrumb } from "../../config/app.structure";
 
 const Series = (props: any): JSX.Element => {
     const [series, setSeries] = React.useState<any>(null);
-    const { navigate, loading, setLoading } = props;
+    const { navigate, loading, setLoading, location } = props;
 
     const fetchData = React.useCallback(async () => {
         try {
@@ -25,13 +25,14 @@ const Series = (props: any): JSX.Element => {
         fetchData();
     }, [fetchData]);
 
-    if (loading || series === null)
-        return <Loader size="md" variant="primary" className={'mt-5 pt-5'} />
 
     return (
         <>
             <BreadCrumb itens={breadcrumb.series} navigate={navigate} />
-            <List navigate={navigate} list={series} />
+            {
+                (loading || series === null) ? <Loader size="md" className={'mt-5 pt-5'} /> :
+                    <List location={location} props={props} navigate={navigate} list={series} />
+            }
         </>
     );
 }

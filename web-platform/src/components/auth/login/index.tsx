@@ -21,7 +21,7 @@ const Login = (props: any) => {
             <section className='w-100 mb-2'>
                 <Button variant='dark' type='button' className='shadow' onClick={login}>Send</Button>
             </section>
-            <span className='mt-2' onClick={_setAuthMode}>Register here</span>
+            <span className='mt-2' onClick={_setAuthMode} style={{ cursor: 'pointer' }}>Register here</span>
         </Form>
     </>
 }

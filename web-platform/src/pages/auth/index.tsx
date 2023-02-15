@@ -6,7 +6,7 @@ import AuthRequests from "../../requests/auth";
 import { setItem } from "../../config/storage";
 
 const Auth = (props: any): JSX.Element => {
-    const { navigate, _setLogged, setLoading } = props;
+    const { navigate, _setLogged, setLoading, isModal, navigateTo } = props;
 
     const [username, setUsername] = React.useState<string>('');
     const [email, setEmail] = React.useState<string>('');
@@ -18,10 +18,9 @@ const Auth = (props: any): JSX.Element => {
     const _setUsername = (event: any): void => setUsername(event?.target.value);
     const _setEmail = (event: any): void => setEmail(event?.target.value);
     const _setPassword = (event: any): void => setPassword(event?.target.value);
-    const _setAuthMode = (): void => {
-        setAuthMode(authMode === null || authMode === 'register' ? 'login' : 'register');
-    }
+    const _setAuthMode = (): void => setAuthMode(authMode === null || authMode === 'register' ? 'login' : 'register');
 
+    console.log(props);
     const login = async (event?: any) => {
         event?.preventDefault();
         try {
@@ -33,7 +32,8 @@ const Auth = (props: any): JSX.Element => {
 
             setItem('userData', resPass?.data);
             _setLogged(true);
-            navigate('/');
+            let nav = (!!navigateTo) ? navigateTo : '/';
+            navigate(nav);
         } catch (e: any) {
             console.log(e);
         } finally {
@@ -62,8 +62,8 @@ const Auth = (props: any): JSX.Element => {
     if (authMode === null) return <></>;
 
     return <>
-        <BreadCrumb itens={[{ flag: 'Login', active: true }]} navigate={navigate} />
-        <Col className="shadow form-auth">
+        {!isModal && <BreadCrumb itens={[{ flag: 'Login', active: true }]} navigate={navigate} />}
+        <Col className={"shadow form-auth " + isModal ? " isModal " : ""}>
             {(authMode === 'login') && <Login {...props} {...{ _setAuthMode, username, _setUsername, password, _setPassword, login, setAuthMode }} />}
             {(authMode === 'register') && <Register {...props} {...{ _setAuthMode, username, _setUsername, email, _setEmail, password, _setPassword, register }} />}
             {(authMode === 'resetPassword') && <ResetPassword {...props} {...{ setAuthMode, username, _setUsername, email, _setEmail, password, _setPassword, register }} />}

@@ -13,10 +13,6 @@ export const breadcrumb = {
     movies: [
         { flag: 'Home', route: '/' },
         { flag: 'Movies', active: true }
-    ],
-    infoSerie: [
-        { flag: 'Home', route: '/', active: false },
-        { flag: 'Series', route: '/series', active: false }
     ]
 }
 

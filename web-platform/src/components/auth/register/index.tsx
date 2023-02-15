@@ -1,4 +1,6 @@
 import { FormControl, Button, Form } from 'react-bootstrap';
+import "./register.scss";
+
 
 const Register = (props: any) => {
     const { _setAuthMode, username, _setUsername, email, _setEmail, password, _setPassword, register } = props;
@@ -11,7 +13,7 @@ const Register = (props: any) => {
             <section className='w-100 mb-2'>
                 <Button variant='dark' type='submit' className='shadow' onClick={register}>Send</Button>
             </section>
-            <span onClick={_setAuthMode}>Login here</span>
+            <span onClick={_setAuthMode} style={{ cursor: 'pointer' }}>Login here</span>
         </Form>
     </>
 }
