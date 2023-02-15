@@ -73,13 +73,13 @@ img,
 .my-navbar {
     background: $dark-color;
     z-index: 15;
-    min-height: $navbar-height;
-    max-height: $navbar-height;
-    height: $navbar-height;
+    // min-height: $navbar-height;
+    // max-height: $navbar-height;
+    // height: $navbar-height;
     @media screen and (max-width: 1020px) {
-        min-height: $navbar-sm-height;
-        max-height: $navbar-sm-height;
-        height: $navbar-sm-height;
+        // min-height: $navbar-sm-height;
+        // max-height: $navbar-sm-height;
+        // height: $navbar-sm-height;
     }
 }
 
@@ -93,4 +93,17 @@ img,
 
 .text-shadow {
     text-shadow: 2px 2px 4px var(--bs-dark);
+}
+
+.account-button {
+    padding: 0 !important;
+    margin-left: 2rem;
+    .dropdown-toggle.btn {
+        padding: 0 !important;
+        background-color: transparent !important;
+        border: none !important;
+        color: var(--bs-dark) !important;
+        margin-top: 8px;
+        font-weight: 600;
+    }
 }

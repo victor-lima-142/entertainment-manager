@@ -7,7 +7,7 @@ import { setItem } from "../../config/storage";
 
 const Auth = (props: any): JSX.Element => {
     const { navigate, _setLogged, setLoading, isModal, navigateTo } = props;
-
+    
     const [username, setUsername] = React.useState<string>('');
     const [email, setEmail] = React.useState<string>('');
     const [password, setPassword] = React.useState<string>('');
@@ -20,7 +20,6 @@ const Auth = (props: any): JSX.Element => {
     const _setPassword = (event: any): void => setPassword(event?.target.value);
     const _setAuthMode = (): void => setAuthMode(authMode === null || authMode === 'register' ? 'login' : 'register');
 
-    console.log(props);
     const login = async (event?: any) => {
         event?.preventDefault();
         try {
@@ -60,10 +59,13 @@ const Auth = (props: any): JSX.Element => {
     }
 
     if (authMode === null) return <></>;
+    
 
+    const formClasses = !isModal ? '' : " isModal ";
+    
     return <>
         {!isModal && <BreadCrumb itens={[{ flag: 'Login', active: true }]} navigate={navigate} />}
-        <Col className={"shadow form-auth " + isModal ? " isModal " : ""}>
+        <Col className={"shadow form-auth " + formClasses}>
             {(authMode === 'login') && <Login {...props} {...{ _setAuthMode, username, _setUsername, password, _setPassword, login, setAuthMode }} />}
             {(authMode === 'register') && <Register {...props} {...{ _setAuthMode, username, _setUsername, email, _setEmail, password, _setPassword, register }} />}
             {(authMode === 'resetPassword') && <ResetPassword {...props} {...{ setAuthMode, username, _setUsername, email, _setEmail, password, _setPassword, register }} />}

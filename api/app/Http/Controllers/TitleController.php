@@ -30,6 +30,8 @@ class TitleController extends Controller
     {
         try {
             $title = Title::findOrFail($request->title);
+            $like = self::checkLike($title->id, $request->user);
+            $title->liked = ($like) ? true : false;
             return response()->json($title, 200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Like;
 use App\Models\People;
 use App\Models\Position;
+use App\Models\Title;
 use App\Models\Token;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -37,6 +39,20 @@ class Controller extends BaseController
         if (!$token)
             return false;
         return $token;
+    }
+
+    static protected function checkTitle(int $titleId): Title|bool {
+        $title = Title::where("id", $titleId)->first();
+        if (!$title)
+            return false;
+        return $title;
+    }
+
+    static protected function checkLike(int $titleId, int $userId): Like|bool {
+        $like = Like::where("title_id", $titleId)->where("user_id", $userId)->first();
+        if (!$like)
+            return false;
+        return $like;
     }
 
 }

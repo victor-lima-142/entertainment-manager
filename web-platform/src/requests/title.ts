@@ -26,6 +26,11 @@ class TitleRequest extends Requests {
         await this.get(endpoints.title.list, body);
         return this.res;
     }
+
+    async like(body?: any) {
+        await this.post(endpoints.title.like, body);
+        return this.res;
+    }
 }
 
 export default TitleRequest;

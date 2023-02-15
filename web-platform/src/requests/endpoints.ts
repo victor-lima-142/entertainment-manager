@@ -17,7 +17,8 @@ const endpoints = {
         edit: '/title/edit',
         find: '/title/find',
         delete: '/title/delete',
-        list: '/title/list'
+        list: '/title/list',
+        like: '/title/like',
     }
 }
 

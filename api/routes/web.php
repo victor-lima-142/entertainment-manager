@@ -29,7 +29,7 @@ $router->group(["middleware" => "auth"], function () use ($router) {
 
 
     /**
-     * User routes
+     * Auth routes
      */
     $router->group(["prefix" => "auth"], function () use ($router) {
         $router->delete("/delete", "UserController@delete");
@@ -37,8 +37,14 @@ $router->group(["middleware" => "auth"], function () use ($router) {
         $router->put("/edit", "UserController@edit");
         $router->get("/find", "UserController@find");
         $router->put("/resetPassword", "AuthController@resetPassword");
-    }
-    );
+    });
+
+    /**
+     * Auth routes
+     */
+    $router->group(["prefix" => "user"], function () use ($router) {
+        $router->get("/likes", "LikeController@list");
+    });
 
     /**
      * Series routes
@@ -48,6 +54,6 @@ $router->group(["middleware" => "auth"], function () use ($router) {
         $router->post("/create", "TitleController@create");
         $router->put("/edit", "TitleController@edit");
         $router->get("/find", "TitleController@find");
-    }
-    );
+        $router->post("/like", "LikeController@like");
+    });
 });

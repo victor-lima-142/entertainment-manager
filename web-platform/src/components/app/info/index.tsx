@@ -1,10 +1,10 @@
 import React from 'react';
-import { Container, Image, Row, Col } from "react-bootstrap"
+import { Container, Image, Row, Col, Button } from "react-bootstrap"
 import BreadCrumb from "../breadcrumb";
 import { useParams } from 'react-router-dom';
 import Loader from '../loader';
 import "./info.scss";
-import { BsStarFill, BsStarHalf } from 'react-icons/bs';
+import { BsStarFill, BsStarHalf, BsHeart, BsHeartFill } from 'react-icons/bs';
 import TitleRequest from '../../../requests/title';
 import { capitalize } from '../../../config/utils';
 
@@ -12,15 +12,13 @@ const InfoTitle = (props: any) => {
     const [data, setData] = React.useState<any>(null);
     const { navigate, loading, setLoading } = props;
     let { titleId } = useParams();
-
+    const titleRequest = new TitleRequest();
 
     const fetchData = React.useCallback(async () => {
         try {
             setLoading(true);
-            const titleRequest = new TitleRequest();
             const res = await titleRequest.find({ title: titleId });
             if (res?.status === 200) {
-                console.log(res);
                 setData(res?.data);
             }
         } catch (e: any) {
@@ -54,6 +52,21 @@ const InfoTitle = (props: any) => {
         </div>
     }
 
+    const likeTitle = async () => {
+        try {
+            const res = await titleRequest.like({ titleId: titleId });
+            if (res?.status === 200) {
+                const res2 = await titleRequest.find({ title: titleId });
+                if (res2?.status === 200) {
+                    console.log(res2);
+                    setData(res2?.data);
+                }
+            }
+        } catch (e: any) {
+            console.log(e);
+        }
+    }
+
     return <>
         <BreadCrumb itens={[
             { flag: `${capitalize(data.type)}s`, route: `/${data.type}s` },
@@ -64,6 +77,9 @@ const InfoTitle = (props: any) => {
                 <Row>
                     <Col md={6} lg={6} sm={12}>
                         <Image src={data.image} className='title-info-image shadow' />
+                        <Button className='like-button btn btn-sm rounded-5 btn-light' onClick={likeTitle}>
+                            {data.liked ? <BsHeartFill /> : <BsHeart />}
+                        </Button>
                     </Col>
                     <Col md={6} lg={6} sm={12}>
                         <h1 className='mb-0 text-secondary fs-2'>{data.name}</h1>
