@@ -1,7 +1,7 @@
 import { Route } from 'react-router';
 import { Routes } from "react-router-dom"
 import { Auth, Games, Home, Movies, MyLikes, Series } from '../../pages';
-import InfoSerie from '../app/info';
+import { InfoTitle } from '../';
 
 const MyRouter = (props: any) => {
     const { loading } = props;
@@ -15,7 +15,7 @@ const MyRouter = (props: any) => {
             <Route path='/movies' element={<Movies { ...props } />} />
             <Route path='/games' element={<Games { ...props } />} />
             <Route path='/my-likes' element={<MyLikes { ...props } />} />
-            <Route path='/title-info/:titleId' element={<InfoSerie { ...props } />} />
+            <Route path='/title-info/:titleId' element={<InfoTitle { ...props } />} />
         </Routes>
     </section>
 }

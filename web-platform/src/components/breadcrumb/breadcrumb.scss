@@ -1,13 +1,13 @@
-@import "../../../global.scss";
+@import "../../global.scss";
 
 .breadcrumb-item {
     a {
         text-decoration: none !important;
-        color: $light-color;
+        color: var(--bs-light);
         font-weight: 500;
     }
     &.active {
-        color: $light-color;
+        color: var(--bs-light);
         cursor: default !important;
         -webkit-touch-callout: none !important;
         -webkit-user-select: none !important;
@@ -17,7 +17,7 @@
         user-select: none !important;
     }
     &.active::before {
-        color: $light-color !important;
+        color: var(--bs-light) !important;
     }
 }
 
@@ -28,7 +28,7 @@
 }
 
 .breadcrumb-container {
-    background-color: $dark-color;
+    background-color: var(--bs-dark);
     display: flex;
     min-height: $breadcrumb-height;
     max-height: $breadcrumb-height;
@@ -46,11 +46,11 @@
 ol.breadcrumb {
     align-items: center !important;
     margin-bottom: auto !important;
-    color: $light-color;
+    color: var(--bs-light);
 }
 
 .breadcrumb-container-single {
-    background-color: $dark-color;
+    background-color: var(--bs-dark);
     display: flex;
     min-height: $breadcrumb-height;
     max-height: $breadcrumb-height;

@@ -2,10 +2,10 @@ import { Card, Carousel } from "react-bootstrap";
 import "./list.scss";
 import { BsStarFill } from 'react-icons/bs';
 import { Location, NavigateFunction } from "react-router-dom";
-import { getItem } from "../../../config/storage";
-import { Modal } from "../..";
+import { getItem } from "../../config/storage";
+import { Modal } from "../";
 import React from "react";
-import { Auth } from "../../../pages";
+import { Auth } from "../../pages";
 
 const List = (prop: SeriesData): JSX.Element => {
     const [open, setOpen] = React.useState<boolean>(false);

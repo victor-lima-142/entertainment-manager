@@ -10,7 +10,7 @@ const Banner = (props: any): JSX.Element => {
         <Carousel activeIndex={index} onSelect={handleSelect}>
             {['banner-1', 'banner-2', 'banner-3'].map((banner: string, index: any) =>
                 <Carousel.Item>
-                    <img className="banner-img" src={require(`../../../assets/img/${banner}.png`)} key={index} alt={index+'-'+banner} />
+                    <img className="banner-img" src={require(`../../assets/img/${banner}.png`)} key={index} alt={index+'-'+banner} />
                 </Carousel.Item>
             )}
         </Carousel>

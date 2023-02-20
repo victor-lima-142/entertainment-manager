@@ -1,7 +1,7 @@
 import { Navbar, Container, Nav, Offcanvas, Image, DropdownButton, Dropdown } from "react-bootstrap";
-import AuthRequests from "../../../requests/auth";
-import { clearStorage, getItem } from "../../../config/storage";
-import { menuLogged, menuUnlogged } from "../../../config/app.structure";
+import AuthRequests from "../../requests/auth";
+import { clearStorage, getItem } from "../../config/storage";
+import { menuLogged, menuUnlogged } from "../../config/app.structure";
 
 
 const MyNavbar = (props: any): JSX.Element => {
@@ -37,7 +37,7 @@ const MyNavbar = (props: any): JSX.Element => {
     return <Navbar key={expand} expand={expand} className="shadow my-navbar" fixed="top">
         <Container>
             <Navbar.Brand onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-                <Image src={require('../../../assets/img/logo.png')} className="universal-logo" />
+                <Image src={require('../../assets/img/logo.png')} className="universal-logo" />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls={`navoffcanvas`} />
             <Navbar.Offcanvas id={`navoffcanvas`} aria-labelledby={`offcanvas-title`} placement="start">

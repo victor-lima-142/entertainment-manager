@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container, Image, Row, Col, Button } from "react-bootstrap"
-import BreadCrumb from "../breadcrumb";
+import { BreadCrumb } from '../';
 import { useParams } from 'react-router-dom';
-import Loader from '../loader';
+import { Loader } from '../';
 import "./info.scss";
 import { BsStarFill, BsStarHalf, BsHeart, BsHeartFill } from 'react-icons/bs';
-import TitleRequest from '../../../requests/title';
-import { capitalize } from '../../../config/utils';
+import TitleRequest from '../../requests/title';
+import { capitalize } from '../../config/utils';
 
 const InfoTitle = (props: any) => {
     const [data, setData] = React.useState<any>(null);

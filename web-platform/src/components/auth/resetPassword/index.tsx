@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import AuthRequests from '../../../requests/auth';
-import Loader from '../../app/loader';
+import Loader from '../../loader';
 
 const ResetPassword = (props: any) => {
     const { email, _setEmail, loading, setLoading, setAuthMode } = props;
