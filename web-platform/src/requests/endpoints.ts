@@ -19,6 +19,9 @@ const endpoints = {
         delete: '/title/delete',
         list: '/title/list',
         like: '/title/like',
+    },
+    likes: {
+        list: '/user/likes',
     }
 }
 

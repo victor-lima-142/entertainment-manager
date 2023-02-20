@@ -32,9 +32,17 @@ class LikeController extends Controller
         }
     }
 
-    public function list(Request $request): JsonResponse {
+    public function list(Request $request): JsonResponse
+    {
         try {
-            $response = Like::where('user_id', $request->user)->get();
+            $response = [];
+            $likes = Like::where('user_id', $request->user)->get();
+            foreach ($likes as $like) {
+                $titleId = $like->title_id;
+                $title = \App\Models\Title::findOrFail($titleId);
+                if ($title)
+                    array_push($response, $title);
+            }
             return response()->json($response, 200);
         } catch (\Exception $e) {
             return response()->json($e->getMessage(), 200);

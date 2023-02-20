@@ -3,11 +3,11 @@
 .breadcrumb-item {
     a {
         text-decoration: none !important;
-        color: $dark-color;
+        color: $light-color;
         font-weight: 500;
     }
     &.active {
-        color: $dark-color;
+        color: $light-color;
         cursor: default !important;
         -webkit-touch-callout: none !important;
         -webkit-user-select: none !important;
@@ -17,7 +17,7 @@
         user-select: none !important;
     }
     &.active::before {
-        color: $dark-color !important;
+        color: $light-color !important;
     }
 }
 
@@ -28,7 +28,7 @@
 }
 
 .breadcrumb-container {
-    background-color: $light-color;
+    background-color: $dark-color;
     display: flex;
     min-height: $breadcrumb-height;
     max-height: $breadcrumb-height;
@@ -46,11 +46,11 @@
 ol.breadcrumb {
     align-items: center !important;
     margin-bottom: auto !important;
-    color: $dark-color;
+    color: $light-color;
 }
 
 .breadcrumb-container-single {
-    background-color: $light-color;
+    background-color: $dark-color;
     display: flex;
     min-height: $breadcrumb-height;
     max-height: $breadcrumb-height;

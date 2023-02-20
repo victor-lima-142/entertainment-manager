@@ -34,10 +34,10 @@ const MyNavbar = (props: any): JSX.Element => {
         {item.flag}
     </span>
 
-    return <Navbar key={expand} expand={expand} className="shadow my-navbar pt-0 pb-0" fixed="top">
+    return <Navbar key={expand} expand={expand} className="shadow my-navbar" fixed="top">
         <Container>
             <Navbar.Brand onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-                {/* <Image src={require('../../../assets/img/logo_name.png')} className="universal-logo" /> */}
+                <Image src={require('../../../assets/img/logo.png')} className="universal-logo" />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls={`navoffcanvas`} />
             <Navbar.Offcanvas id={`navoffcanvas`} aria-labelledby={`offcanvas-title`} placement="start">

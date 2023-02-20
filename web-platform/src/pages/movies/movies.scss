@@ -1,0 +1,18 @@
+$banner-img: none;
+
+.sndHeader {
+    width: 100%;
+    height: 600px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top;
+    text-align: center;
+    background-image: linear-gradient(to bottom, rgba(245, 246, 252, 
+    0.52), rgba(117, 19, 93, 0.73)),
+    var($banner-img);
+    background-size: cover;
+}
+
+:export {
+    banner-img: $banner-img;
+}

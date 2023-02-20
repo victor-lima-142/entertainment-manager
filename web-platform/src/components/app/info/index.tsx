@@ -12,11 +12,12 @@ const InfoTitle = (props: any) => {
     const [data, setData] = React.useState<any>(null);
     const { navigate, loading, setLoading } = props;
     let { titleId } = useParams();
-    const titleRequest = new TitleRequest();
+    
 
     const fetchData = React.useCallback(async () => {
         try {
             setLoading(true);
+            const titleRequest = new TitleRequest();
             const res = await titleRequest.find({ title: titleId });
             if (res?.status === 200) {
                 setData(res?.data);
@@ -54,6 +55,7 @@ const InfoTitle = (props: any) => {
 
     const likeTitle = async () => {
         try {
+            const titleRequest = new TitleRequest();
             const res = await titleRequest.like({ titleId: titleId });
             if (res?.status === 200) {
                 const res2 = await titleRequest.find({ title: titleId });
@@ -77,7 +79,7 @@ const InfoTitle = (props: any) => {
                 <Row>
                     <Col md={6} lg={6} sm={12}>
                         <Image src={data.image} className='title-info-image shadow' />
-                        <Button className='like-button btn btn-sm rounded-5 btn-light' onClick={likeTitle}>
+                        <Button className='like-button btn btn-sm rounded-5 shadow btn-dark' onClick={likeTitle}>
                             {data.liked ? <BsHeartFill /> : <BsHeart />}
                         </Button>
                     </Col>

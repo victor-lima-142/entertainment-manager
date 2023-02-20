@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import "./banner.scss"
 
 const Banner = (props: any): JSX.Element => {
-    const [index, setIndex] = useState(0);
+    const [index, setIndex] = React.useState<number>(0);
     const handleSelect = (selectedIndex: number, e: any): void => setIndex(selectedIndex);
 
     return (
