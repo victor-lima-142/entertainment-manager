@@ -9,6 +9,6 @@ class GenreController extends Controller
 {
     public function list () {
         $genres = Genre::all();
-        
+        return response()->json($genres, 200);
     }
 }
