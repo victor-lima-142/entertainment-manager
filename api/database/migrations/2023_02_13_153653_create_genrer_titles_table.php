@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Gender;
+use App\Models\Genre;
 use App\Models\Title;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,10 +15,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gender_titles', function (Blueprint $table) {
+        Schema::create('genre_titles', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Title::class, 'title_id');
-            $table->foreignIdFor(Gender::class, 'gender_id');
+            $table->foreignIdFor(Genre::class, 'genre_id');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gender_titles');
+        Schema::dropIfExists('genre_titles');
     }
 };

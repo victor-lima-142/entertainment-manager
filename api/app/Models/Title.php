@@ -34,9 +34,9 @@ class Title extends Model
         return $this->belongsTo('Like', 'title_id');
     }
 
-    public function genderTitle()
+    public function genreTitle()
     {
-        return $this->belongsTo('GenderTitle', 'title_id');
+        return $this->belongsTo('GenreTitle', 'title_id');
     }
 
     static public function getSerie(int|array $id = null)
