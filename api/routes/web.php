@@ -11,6 +11,12 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
+
+/** UNAUTHENTICATED ROUTES */
+
+/**
+ * Auth routes
+ */
 $router->group(["prefix" => "auth"], function () use ($router) {
     $router->post("/register", "UserController@register");
     $router->post("/verifyUser", "AuthController@verifyUser");
@@ -20,40 +26,58 @@ $router->group(["prefix" => "auth"], function () use ($router) {
     $router->post('/resetForgotPassword', 'AuthMailController@resetForgotPassword');
 });
 
+/**
+ * Titles routes
+ */
 $router->group(["prefix" => "title"], function () use ($router) {
     $router->get("/list", "TitleController@list");
 });
 
+/**
+ * Genres routes
+ */
+$router->group(["prefix" => "genre"], function () use ($router) {
+    $router->get("/list", "GenreController@list");
+});
+
+
+/** AUTHENTICATED ROUTES */
 $router->group(["middleware" => "auth"], function () use ($router) {
-    $router->get("/", "TokenController@index");
-
-
     /**
      * Auth routes
      */
-    $router->group(["prefix" => "auth"], function () use ($router) {
-        $router->delete("/delete", "UserController@delete");
-        $router->post("/logout", "AuthController@logout");
-        $router->put("/edit", "UserController@edit");
-        $router->get("/find", "UserController@find");
-        $router->put("/resetPassword", "AuthController@resetPassword");
-    });
+    $router->group(
+        ["prefix" => "auth"],
+        function () use ($router) {
+            $router->delete("/delete", "UserController@delete");
+            $router->post("/logout", "AuthController@logout");
+            $router->put("/edit", "UserController@edit");
+            $router->get("/find", "UserController@find");
+            $router->put("/resetPassword", "AuthController@resetPassword");
+        }
+    );
 
     /**
-     * Auth routes
+     * Likes routes
      */
-    $router->group(["prefix" => "user"], function () use ($router) {
-        $router->get("/likes", "LikeController@list");
-    });
+    $router->group(
+        ["prefix" => "user"],
+        function () use ($router) {
+            $router->get("/likes", "LikeController@list");
+        }
+    );
 
     /**
-     * Series routes
+     * Titles routes
      */
-    $router->group(["prefix" => "title"], function () use ($router) {
-        $router->delete("/delete", "TitleController@delete");
-        $router->post("/create", "TitleController@create");
-        $router->put("/edit", "TitleController@edit");
-        $router->get("/find", "TitleController@find");
-        $router->post("/like", "LikeController@like");
-    });
+    $router->group(
+        ["prefix" => "title"],
+        function () use ($router) {
+            $router->delete("/delete", "TitleController@delete");
+            $router->post("/create", "TitleController@create");
+            $router->put("/edit", "TitleController@edit");
+            $router->get("/find", "TitleController@find");
+            $router->post("/like", "LikeController@like");
+        }
+    );
 });

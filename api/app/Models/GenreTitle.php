@@ -4,16 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class GenderTitle extends Model
+class GenreTitle extends Model
 {
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'gender_id',
+        'genre_id',
         'title_id'
     ];
 
-    protected $foreignKey = ['gender_id', 'title_id'];
+    protected $foreignKey = ['genre_id', 'title_id'];
 
     protected $dates = [
         'deleted_at',
@@ -21,9 +21,9 @@ class GenderTitle extends Model
         'updated_at'
     ];
 
-    public function gender()
+    public function genre()
     {
-        return $this->hasOne('Gender', 'gender_id');
+        return $this->hasOne('Genre', 'genre_id');
     }
 
     public function title()

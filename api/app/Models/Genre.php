@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Gender extends Model
+class Genre extends Model
 {
     protected $primaryKey = 'id';
 
@@ -19,8 +19,8 @@ class Gender extends Model
         'updated_at'
     ];
 
-    public function genderTitle()
+    public function genreTitle()
     {
-        return $this->belongsTo('GenderTitle', 'gender_id');
+        return $this->belongsTo('GenreTitle', 'genre_id');
     }
 }
