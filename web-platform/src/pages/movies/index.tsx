@@ -6,7 +6,7 @@ import TitleRequest from "../../requests/title";
 import { getRandNumber } from "../../config/utils";
 
 const Movies = (props: any): JSX.Element => {
-    const [movies, setSeries] = React.useState<any>(null);
+    const [movies, setMovies] = React.useState<any>(null);
     const [imageBanner, setImageBanner] = React.useState<any>(null);
     const { navigate, loading, setLoading, location } = props;
 
@@ -18,7 +18,7 @@ const Movies = (props: any): JSX.Element => {
             if (res?.status === 200 && res.data) {
                 const data = res.data;
                 const randData = data[getRandNumber(0, res?.data.length)];
-                setSeries(data);
+                setMovies(data);
                 setImageBanner(randData.image);
             }
         } catch (e: any) {
@@ -26,7 +26,7 @@ const Movies = (props: any): JSX.Element => {
         } finally {
             setTimeout(() => setLoading(false), 1000)
         }
-    }, [setSeries, setLoading]);
+    }, [setMovies, setLoading]);
 
     useEffect(() => {
         fetchData();
@@ -40,7 +40,7 @@ const Movies = (props: any): JSX.Element => {
                 (loading || movies === null || !imageBanner) ? <Loader size="md" className={'mt-5 pt-5'} /> :
                     <>
                         
-                        <List location={location} props={props} navigate={navigate} list={movies} />
+                        <List location={location} props={props} navigate={navigate} setList={setMovies} list={movies} />
                     </>
             }
         </>

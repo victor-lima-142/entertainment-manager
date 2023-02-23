@@ -1,9 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
-$navbar-height: 65px;
+$navbar-height: 48px;
 $navbar-sm-height: 80px;
 $dark-color: var(--bs-dark);
 $light-color: var(--bs-light);
@@ -54,7 +54,7 @@ body {
 * {
     // font-family: 'Lato', sans-serif !important;
     // font-family: 'Nunito', sans-serif !important;
-    font-family: 'Istok Web', sans-serif !important;
+    font-family: "Istok Web", sans-serif !important;
 }
 span,
 h1,
@@ -82,13 +82,14 @@ img,
     background: $light-color;
     z-index: 15;
     padding: 3px 0px !important;
-    // min-height: $navbar-height;
-    // max-height: $navbar-height;
-    // height: $navbar-height;
-    @media screen and (max-width: 1020px) {
-        // min-height: $navbar-sm-height;
-        // max-height: $navbar-sm-height;
-        // height: $navbar-sm-height;
+    @media screen and (max-width: 800px) {
+        padding: 0px !important;
+    }
+    .container {
+        @media screen and (max-width: 800px) {
+            padding: 0px !important;
+            margin: 0px !important;
+        }
     }
 }
 
@@ -97,7 +98,7 @@ img,
 }
 
 .with-top-space {
-    // margin-top: $navbar-height !important;
+    margin-top: $navbar-height !important;
 }
 
 .text-shadow {
@@ -117,6 +118,33 @@ img,
     }
 }
 
-.breadcrumb-container-single, .breadcrumb-container {
+.breadcrumb-container-single,
+.breadcrumb-container {
     display: none !important;
+}
+
+.navbar-nav {
+    @media screen and (max-width: 992px) {
+        > * {
+            color: $dark-color !important;
+        }
+    }
+    
+}
+
+.account-button {
+    @media screen and (max-width: 992px) {
+        text-align: left !important;
+        margin: 0px !important;
+        padding: 0px !important;
+    }
+    
+    button {
+        @media screen and (max-width: 992px) {
+            text-align: left !important;
+            margin: 0px !important;
+            padding: 0px !important;
+        }
+        
+    }
 }

@@ -22,6 +22,9 @@ const endpoints = {
     },
     likes: {
         list: '/user/likes',
+    },
+    genres: {
+        list: '/genre/list'
     }
 }
 

@@ -30,7 +30,7 @@ const MyLikes = (props: any): JSX.Element => {
             <BreadCrumb itens={[{ flag: 'Liked titles', active: true }]} navigate={navigate} />
             {
                 (loading || likes === null) ? <Loader size="md" className={'mt-5 pt-5'} /> :
-                    <List location={location} props={props} navigate={navigate} list={likes} />
+                    <List location={location} props={props} navigate={navigate} setList={setLikes} list={likes} />
             }
         </>
     );

@@ -8,8 +8,12 @@
     justify-content: center;
     flex-wrap: wrap !important;
     gap: 1%;
-    padding-top: 65px;
     border: none;
+
+    @media screen and (max-width: 650px) {
+        margin: 0rem;
+        
+    }
     * {
         padding: 0px !important;
         border: none;
@@ -34,6 +38,12 @@
         * {
             border: none;
         }
+        @media screen and (max-width: 650px) {
+            width: 23% !important;
+        }
+        @media screen and (max-width: 980px) {
+            width: 25% !important;
+        }
 
         .carousel-inner {
             .carousel-item {
@@ -53,6 +63,12 @@
                         line-break: "anywhere" !important;
                         font-size: larger !important;
                         margin: 0px !important;
+                        @media screen and (max-width: 780px) {
+                            font-size: small !important;
+                        }
+                        @media screen and (max-width: 1100px) {
+                            font-size: medium !important;
+                        }
                     }
                 }
             }

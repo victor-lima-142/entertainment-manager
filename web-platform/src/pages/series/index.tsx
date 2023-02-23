@@ -31,7 +31,7 @@ const Series = (props: any): JSX.Element => {
             <BreadCrumb itens={breadcrumb.series} navigate={navigate} />
             {
                 (loading || series === null) ? <Loader size="md" className={'mt-5 pt-5'} /> :
-                    <List location={location} props={props} navigate={navigate} list={series} />
+                    <List location={location} props={props} navigate={navigate} setList={setSeries} list={series} />
             }
         </>
     );

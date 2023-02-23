@@ -1,0 +1,35 @@
+@import "../../../global.scss";
+
+.genre-slide-cont {
+    @media screen and (max-width: 800px) {
+        padding: 0px !important;
+        margin: 0px 2rem !important;
+    }
+    .my-carousel-genres {
+        a.carousel-control-next, a.carousel-control-prev {
+            @media screen and (max-width: 1150px) {
+                display: none !important;
+            }
+        }
+        .carousel-genres {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+    
+            .card-genre {
+                
+                button {
+                    width: 135px;
+                    @media screen and (max-width: 1150px) {
+                        width: 115px;
+                        font-size: small !important;
+                    }
+                }
+            }
+        }
+    }
+    
+}

@@ -1,4 +1,4 @@
-import Requests from ".";
+import Requests from "./requests";
 import endpoints from "./endpoints";
 
 class TitleRequest extends Requests {
@@ -29,6 +29,11 @@ class TitleRequest extends Requests {
 
     async like(body?: any) {
         await this.post(endpoints.title.like, body);
+        return this.res;
+    }
+
+    async listGenres(body?: any) {
+        await this.get(endpoints.genres.list, body);
         return this.res;
     }
 }

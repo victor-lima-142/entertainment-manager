@@ -3,14 +3,14 @@ import "./list.scss";
 import { BsStarFill } from 'react-icons/bs';
 import { Location, NavigateFunction } from "react-router-dom";
 import { getItem } from "../../config/storage";
-import { Modal } from "../";
+import { FilterList, Modal } from "../";
 import React from "react";
 import { Auth } from "../../pages";
 
 const List = (prop: SeriesData): JSX.Element => {
     const [open, setOpen] = React.useState<boolean>(false);
     const [properties, setProperties] = React.useState<any>(null);
-    const { list, navigate, props } = prop;
+    const { list, setList, navigate, props } = prop;
 
     const getRate = (rate: number) => 5 * rate / 10;
 
@@ -39,29 +39,34 @@ const List = (prop: SeriesData): JSX.Element => {
 
     const closeModalAlert = () => setOpen(false);
 
-    return <section className='image-back'>
-        <div className='list-titles-container'>
-            {list.map((title: any, index: any) => {
-                const { name, id, image, rate } = title;
-                return <Card onClick={() => onHandle(id)} style={{ cursor: 'pointer' }} className="shadow-sm p-0 rounded-3 card-title " key={index}>
-                    <Carousel variant="dark" controls={false} indicators={false} className="rounded-3 shadow-sm ">
-                        <Carousel.Item className="rounded-3 ">
-                            <img className="d-block w-100 shadow-sm rounded-3" src={image} alt={`title-${name}-${id}}`} />
-                            <Carousel.Caption>
-                                <h5>{name}</h5>
-                                <h6>{RenderRate(getRate(rate))}</h6>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                    </Carousel>
-                </Card>
-            })}
-            <Modal align={'center'} size="sm" open={open} onClose={closeModalAlert} body={<Auth {...properties} />} />
-        </div>
-    </section>
+    return <>
+
+        <section className='image-back'>
+            <FilterList {...{ data: list, setData: setList, fieldsToSearch: ['name'] }} />
+            <div className='list-titles-container'>
+                {list.map((title: any, index: any) => {
+                    const { name, id, image, rate } = title;
+                    return <Card onClick={() => onHandle(id)} style={{ cursor: 'pointer' }} className="shadow-sm p-0 rounded-3 card-title " key={index}>
+                        <Carousel variant="dark" controls={false} indicators={false} className="rounded-3 shadow-sm ">
+                            <Carousel.Item className="rounded-3 ">
+                                <img className="d-block w-100 shadow-sm rounded-3" src={image} alt={`title-${name}-${id}}`} />
+                                <Carousel.Caption>
+                                    <h5>{name}</h5>
+                                    <h6>{RenderRate(getRate(rate))}</h6>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        </Carousel>
+                    </Card>
+                })}
+                <Modal align={'center'} size="sm" open={open} onClose={closeModalAlert} body={<Auth {...properties} />} />
+            </div>
+        </section>
+    </>
 }
 
 interface SeriesData {
     list: Array<object>,
+    setList: any,
     navigate: NavigateFunction,
     location: Location,
     props: any

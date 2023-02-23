@@ -9,3 +9,6 @@ export { default as BreadCrumb } from './breadcrumb';
 export { default as List } from './list';
 export { default as InfoTitle } from './info';
 export { default as Modal } from './modal';
+export { default as GenreSlide } from './filter/genre-slide';
+export { default as SearchTitle } from './filter/search-title';
+export { default as FilterList } from './filter';

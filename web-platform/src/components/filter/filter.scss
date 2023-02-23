@@ -1,0 +1,33 @@
+.carousel-control-prev {
+    margin-left: -22px;
+    width: 125px !important;
+}
+
+.carousel-control-next {
+    margin-right: -22px;
+    width: 125px !important;
+}
+
+.filter-container {
+    @media screen and (max-width: 1580px) {
+        padding: 15px 0px 0px 0px !important;
+    }
+
+    .row {
+        .col-lg-9, .col-lg-3, .col-md-9, .col-md-3, .col-sm-12, .col-sm-12 {
+            @media screen and (max-width: 1500px) {
+                width: 100%;
+                padding: 0px !important;
+            }
+
+            > input {
+                @media screen and (max-width: 1300px) {
+                    width: 70% !important;
+                }
+                @media screen and (max-width: 8100px) {
+                    width: 60% !important;
+                }
+            }
+        }
+    }
+}

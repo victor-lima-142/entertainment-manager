@@ -1,4 +1,4 @@
-import Requests from ".";
+import Requests from "./requests";
 import endpoints from "./endpoints";
 
 class AuthRequests extends Requests {
