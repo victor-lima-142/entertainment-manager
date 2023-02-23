@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Genre;
+use App\Models\GenreTitle;
 use App\Models\Title;
 use hmerritt\Imdb;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -17,51 +19,356 @@ class TitleSeeder extends Seeder
     public function run()
     {
         $imdb = new Imdb();
-        $seriesName = [
-            "The Last Of Us" => 'serie',
-            "Grey's Anatomy" => 'serie',
-            "Breaking Bad" => 'serie',
-            "Rick and Morty" => 'serie',
-            "The Last Kingdom" => 'serie',
-            "Doctor House" => 'serie',
-            "Once Upon A Time" => 'serie',
-            "The White Lotus" => 'serie',
-            "Loki" => 'serie',
-            "WandaVision" => 'serie',
-            "Arrow" => 'serie',
-            "Scandal" => 'serie',
-            "Peaky Blinders" => 'serie',
-            "Vikings" => 'serie',
-            "Friends" => 'serie',
-            "Brooklyn Nine-Nine" => 'serie',
-            "Orange Is The New Black" => 'serie',
-            "Jurassic Park" => 'movie',
-            "The Godfather" => 'movie',
-            "King Richard" => 'movie',
-            "Dune" => 'movie',
-            "Black Adam" => 'movie',
-            "The Batman" => 'movie',
-            "Star Wars" => 'movie',
-            "Harry Potter" => 'movie',
-            "Pirates of the caribbean" => 'movie',
-            "High School Musical" => 'movie',
-            "Ben 10" => 'serie',
-            "Uncharted" => 'game',
-            "Grand Theft Auto" => 'game',
-            "GTA" => 'game',
-            "Assassin's Creed" => 'game',
-            "Call Of Duty" => 'game',
-            "Pro Evolution Soccer" => 'game',
-            "Pay Day" => 'game',
-            "Far Cry" => 'game',
-            "League Of Legends" => 'game',
-            "Batman Arkham" => 'game',
-            "Battlefield" => 'game',
-            "NBA 2k" => 'game',
-            "Scooby Doo" => 'serie',
+        $titles = [
+            "The Last Of Us" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Drama',
+                    'Suspense',
+                    'Horror'
+                ]
+            ],
+            "Grey's Anatomy" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Drama',
+                    'Thriller',
+                    'Romance'
+                ]
+            ],
+            "Breaking Bad" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Drama',
+                    'Thriller'
+                ]
+            ],
+            "Rick and Morty" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Comedy',
+                    'Adventure',
+                    'Action',
+                ]
+            ],
+            "The Last Kingdom" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Medieval',
+                    'Action',
+                    'Adventure',
+                    'Historical'
+                ]
+            ],
+            "Doctor House" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Drama',
+                    'Romance',
+                    'Thriller'
+                ]
+            ],
+            "Once Upon A Time" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Adventure',
+                    'Suspense',
+                    'Drama',
+                    'Medieval'
+                ]
+            ],
+            "The White Lotus" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Drama',
+                    'Comedy'
+                ]
+            ],
+            "Loki" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Sci Fi',
+                    'Science Fiction',
+                    'Mistery',
+                    'Fantasy',
+                    'Adventure',
+                ]
+            ],
+            "WandaVision" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Sci Fi',
+                    'Science Fiction',
+                    'Mistery',
+                    'Fantasy',
+                    'Adventure',
+                ]
+            ],
+            "Arrow" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Sci Fi',
+                    'Science Fiction',
+                    'Mistery',
+                    'Fantasy',
+                    'Adventure',
+                ]
+            ],
+            "Scandal" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Drama',
+                    'Comedy',
+                    'Romance',
+                    'Thriller',
+                ]
+            ],
+            "Peaky Blinders" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Action',
+                    'Drama',
+                    'Suspense',
+                    'Historical'
+                ]
+            ],
+            "Vikings" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Action',
+                    'Drama',
+                    'Suspense',
+                    'Historical',
+                    'Medieval'
+                ]
+            ],
+            "Friends" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Comedy',
+                    'Romance',
+                    'Drama'
+                ]
+            ],
+            "Brooklyn Nine-Nine" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Comedy',
+                    'Romance',
+                    'Action'
+                ]
+            ],
+            "Orange Is The New Black" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Drama',
+                    'Comedy',
+                    'Romance',
+                    'Thriller'
+                ]
+            ],
+            "Jurassic Park" => [
+                'type' => 'movie',
+                'genres' => [
+                    'Adventure',
+                    'Action',
+                    'Suspense',
+                    'Fantasy'
+                ]
+            ],
+            "The Godfather" => [
+                'type' => 'movie',
+                'genres' => [
+                    'Action',
+                    'Drama',
+                    'Historical'
+                ]
+            ],
+            "King Richard" => [
+                'type' => 'movie',
+                'genres' => [
+                    'Drama',
+                    'Thriller'
+                ]
+            ],
+            "Dune" => [
+                'type' => 'movie',
+                'genres' => [
+                    'Action',
+                    'Adventure',
+                    'Fantasy',
+                    'Science Fiction',
+                    'Sci Fi',
+                ]
+            ],
+            "Black Adam" => [
+                'type' => 'movie',
+                'genres' => [
+                    'Action',
+                    'Heroes',
+                    'Science Fiction',
+                    'Adventure'
+                ]
+            ],
+            "The Batman" => [
+                'type' => 'movie',
+                'genres' => [
+                    'Action',
+                    'Heroes',
+                    'Science Fiction',
+                    'Adventure',
+                    'Suspense'
+                ]
+            ],
+            "Star Wars" => [
+                'type' => 'movie',
+                'genres' => [
+                    'Action',
+                    'Adventure',
+                    'Fantasy',
+                    'Science Fiction',
+                    'Sci Fi',
+                ]
+            ],
+            "Harry Potter" => [
+                'type' => 'movie',
+                'genres' => [
+                    'Action',
+                    'Adventure',
+                    'Fantasy',
+                    'Science Fiction',
+                ]
+            ],
+            "Pirates of the caribbean" => [
+                'type' => 'movie',
+                'genres' => [
+                    'Action',
+                    'Adventure',
+                    'Fantasy',
+                    'Science Fiction',
+                ]
+            ],
+            "High School Musical" => [
+                'type' => 'movie',
+                'genres' => [
+                    'Drama',
+                    'Comedy',
+                    'Musical',
+                    'Romance',
+                ]
+            ],
+            "Ben 10" => [
+                'type' => 'serie',
+                'genres' => [
+                    'Action',
+                    'Adventure',
+                    'Comedy',
+                    'Science Fiction',
+                ]
+            ],
+            "Uncharted" => [
+                'type' => 'game',
+                'genres' => [
+                    'Action',
+                    'Adventure'
+                ]
+            ],
+            "Grand Theft Auto" => [
+                'type' => 'game',
+                'genres' => [
+                    'Action',
+                    'Adventure',
+                    'Thriller'
+                ]
+            ],
+            "GTA" => [
+                'type' => 'game',
+                'genres' => [
+                    'Action',
+                    'Adventure',
+                    'Thriller'
+                ]
+            ],
+            "Assassin's Creed" => [
+                'type' => 'game',
+                'genres' => [
+                    'Action',
+                    'Adventure',
+                    'Thriller',
+                    'Historical',
+                    'Medieval'
+                ]
+            ],
+            "Call Of Duty" => [
+                'type' => 'game',
+                'genres' => [
+                    'Action',
+                    'Adventure',
+                    'Drama',
+                    'Historical'
+                ]
+            ],
+            "Pro Evolution Soccer" => [
+                'type' => 'game',
+                'genres' => [
+                    'Action',
+                    'Sport',
+                ]
+            ],
+            "Pay Day" => [
+                'type' => 'game',
+                'genres' => [
+                    'Action',
+                    'Adventure',
+                    'Thriller'
+                ]
+            ],
+            "Far Cry" => [
+                'type' => 'game',
+                'genres' => [
+                    'Action',
+                    'Adventure',
+                    'Thriller',
+                    'Historical',
+                ]
+            ],
+            "League Of Legends" => [
+                'type' => 'game',
+                'genres' => [
+                    'Action',
+                    'Adventure'
+                ]
+            ],
+            "Batman Arkham" => [
+                'type' => 'game',
+                'genres' => [
+                    'Action',
+                    'Heroes',
+                    'Science Fiction',
+                    'Adventure',
+                    'Suspense'
+                ]
+            ],
+            "Battlefield" => [
+                'type' => 'game',
+                'genres' => [
+                    'Action',
+                    'Adventure',
+                    'Drama',
+                    'Historical'
+                ]
+            ],
+            "NBA 2k" => [
+                'type' => 'game',
+                'genres' => [
+                    'Adventure'
+                ]
+            ],
         ];
-        foreach ($seriesName as $name => $type) {
+        foreach ($titles as $name => $titleD) {
             try {
+                $type = $titleD['type'];
+                $genres = $titleD['genres'];
                 $data = $imdb->search($name);
                 $titles = $data['titles'];
                 foreach ($titles as $title) {
@@ -75,9 +382,17 @@ class TitleSeeder extends Seeder
                         'type' => $type
                     ]);
                     $newTitle->save();
+                    foreach ($genres as $genre) {
+                        $gn = Genre::where('name', '=', $genre)->first();
+                        if ($gn) {
+                            $join = new GenreTitle([
+                                'genre_id' => $gn->id,
+                                'title_id' => $newTitle->id,
+                            ]);
+                            $join->save();
+                        }
+                    }
                 }
-                
-                
             } catch (\Exception $e) {
                 throw $e;
             }

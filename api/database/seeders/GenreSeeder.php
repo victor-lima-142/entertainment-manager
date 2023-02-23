@@ -22,6 +22,8 @@ class GenreSeeder extends Seeder
             'Drama',
             'Fantasy',
             'Horror',
+            'Heroes',
+            'Historical',
             'Suspense',
             'Mistery',
             'Romance',
@@ -30,7 +32,8 @@ class GenreSeeder extends Seeder
             'Science Fiction',
             'Western',
             'Sci Fi',
-            'Medieval'
+            'Medieval',
+            'Sport',
         ];
 
         foreach ($genres as $genre) {
