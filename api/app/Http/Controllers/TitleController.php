@@ -13,13 +13,7 @@ class TitleController extends Controller
     {
         $hasId = $request->id;
         if ($request->type) {
-            if ($request->type === 'game') {
-                $titles = Title::getGame(($hasId) ? $hasId : null);
-            } elseif ($request->type === 'movie') {
-                $titles = Title::getMovie(($hasId) ? $hasId : null);
-            } else {
-                $titles = Title::getSerie(($hasId) ? $hasId : null);
-            }
+            $titles = Title::getWithWhere(id: ($hasId) ? $hasId : null, type: $request->type);
         } else {
             $titles = Title::all();
         }
