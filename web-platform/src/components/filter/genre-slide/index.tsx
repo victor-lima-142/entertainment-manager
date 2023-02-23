@@ -1,15 +1,16 @@
 import React from 'react';
 import { Button, Carousel, Container } from 'react-bootstrap';
-import { fetchGenre } from '../../../requests'
 import { Loader } from '../..';
 import { cutArray } from '../../../config/utils';
 import './genre-slide.scss';
+import { TitleRequests } from '../../../requests';
 
 const GenreSlide = (props: any) => {
     const [index, setIndex] = React.useState<number>(0);
     const [genres, setGenres] = React.useState<any>(null);
-    const [quantityPerPage, setQuantityPerPage] = React.useState<number>(window.innerWidth >= 900 ? 5 : 2);
-    const { loading, setLoading } = props;
+    const [quantityPerPage, setQuantityPerPage] = React.useState<number>(window.innerWidth >= 900 ? 6 : 3);
+    const { loading, setLoading, originalList, setOriginalList, setList } = props;
+    
 
     const handleSelect = (selectedIndex: number, e: any) => {
         setIndex(selectedIndex);
@@ -17,7 +18,9 @@ const GenreSlide = (props: any) => {
 
     const fetchData = React.useCallback(async () => {
         try {
-            const genres: Array<object> | null = await fetchGenre();
+            const titleRequests = new TitleRequests();
+            const res = await titleRequests.listGenres();
+            const genres = res?.data;
             if (genres) {
                 const sorted = genres.sort(function (a: any, b: any) {
                     if (a['name'] < b['name']) return -1;
@@ -32,28 +35,46 @@ const GenreSlide = (props: any) => {
         } finally {
             setLoading(false);
         }
-    }, [setGenres, setLoading])
+    }, [setGenres, setLoading, quantityPerPage])
 
     React.useEffect(() => {
-        window.addEventListener('resize', () => setQuantityPerPage(window.innerWidth >= 900 ? 5 : 2));
-
+        window.addEventListener('resize', () => setQuantityPerPage(window.innerWidth >= 900 ? 6 : 3));
         fetchData()
     }, [fetchData]);
 
     if (loading || genres === null)
         return <Loader variant='light' />
 
+
+    const _changeGenre = (name: string | null = null) => {
+        try {
+            setLoading(true);
+            setOriginalList(originalList);
+            if (name) {
+                const listTwo = originalList;
+                const data = listTwo.filter((title: any) => title.genres.includes(name));
+                console.log([name, data])
+                setList(data);
+            } else {
+                setList(originalList);
+            }
+        } catch (e: any) {
+            console.log('e', [e]);
+        } finally {
+            setLoading(false);
+        }
+    }
     return (
         <Container className='genre-slide-cont'>
             <Carousel interval={null} className='my-carousel-genres' activeIndex={index} onSelect={handleSelect} indicators={false}>
                 {genres.map((listGenre: any, key: any) => {
                     return <Carousel.Item key={key}>
                         <section className='carousel-genres'>
-                            {listGenre.map((genre: any, index: any) => {
-                                const { name } = genre;
+                            {listGenre.map((genreData: any, index: any) => {
+                                const { name } = genreData;
                                 return <React.Fragment key={index}>
                                     <div className='card-genre text-center'>
-                                        <Button variant={'outline-light'} className='shadow-lg'>
+                                        <Button variant={'outline-light'} className='shadow-lg' onClick={() => { _changeGenre(name) }}>
                                             {name}
                                         </Button>
                                     </div>

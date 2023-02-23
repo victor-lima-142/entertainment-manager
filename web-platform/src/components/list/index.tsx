@@ -8,10 +8,11 @@ import React from "react";
 import { Auth } from "../../pages";
 
 const List = (prop: SeriesData): JSX.Element => {
+    const { list, setList, navigate, props } = prop;
     const [open, setOpen] = React.useState<boolean>(false);
     const [properties, setProperties] = React.useState<any>(null);
-    const { list, setList, navigate, props } = prop;
-
+    const [originalList, setOriginalList] = React.useState<any>(list);
+    
     const getRate = (rate: number) => 5 * rate / 10;
 
     const RenderRate = (rate: number) => {
@@ -42,7 +43,7 @@ const List = (prop: SeriesData): JSX.Element => {
     return <>
 
         <section className='image-back'>
-            <FilterList {...{ data: list, setData: setList, fieldsToSearch: ['name'] }} />
+            <FilterList {...{ list: list, setList: setList, fieldsToSearch: ['name'], originalList: originalList, setOriginalList: setOriginalList }} { ...props} />
             <div className='list-titles-container'>
                 {list.map((title: any, index: any) => {
                     const { name, id, image, rate } = title;

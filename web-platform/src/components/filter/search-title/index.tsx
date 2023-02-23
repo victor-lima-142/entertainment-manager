@@ -1,6 +1,6 @@
 import React from "react";
-import { FormControl } from "react-bootstrap";
 import "./search-title.scss";
+import { FormControl } from "react-bootstrap";
 
 const SearchTitle = (props: any) => {
     const { fieldsToSearch, data, setData } = props;
@@ -29,7 +29,7 @@ const SearchTitle = (props: any) => {
         setOriginalData(originalData);
     }
     return <>
-        <FormControl onChange={onChangeHandler} type={'text'} placeholder="Search a title here..." className="search-title-form" />
+        <input onChange={onChangeHandler} type={'text'} placeholder="Search a title here..." className="search" />
     </>
 }
 
