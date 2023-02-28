@@ -1,6 +1,4 @@
 export { default as Home } from './home';
 export { default as Auth } from './auth';
-export { default as Series } from './series';
-export { default as Games } from './games';
-export { default as Movies } from './movies';
-export { default as MyLikes } from './my-likes';
+export { default as Account } from './account';
+export { default as List } from './list';

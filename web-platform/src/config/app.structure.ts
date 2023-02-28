@@ -23,15 +23,15 @@ export const menuLogged = [
     },
     {
         flag: 'Series',
-        link: '/series'
+        link: '/list/series/'
     },
     {
         flag: 'Movies',
-        link: '/movies'
+        link: '/list/movies/'
     },
     {
         flag: 'Games',
-        link: '/games'
+        link: '/list/games/'
     }
 ]
 
@@ -42,15 +42,15 @@ export const menuUnlogged = [
     },
     {
         flag: 'Series',
-        link: '/series'
+        link: '/list/series/'
     },
     {
         flag: 'Movies',
-        link: '/movies'
+        link: '/list/movies/'
     },
     {
         flag: 'Games',
-        link: '/games'
+        link: '/list/games/'
     },
     {
         flag: 'Login',

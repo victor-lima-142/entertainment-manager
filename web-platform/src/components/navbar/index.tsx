@@ -9,7 +9,7 @@ const MyNavbar = (props: any): JSX.Element => {
     const { navigate, _setLogged, logged, location, loading } = props;
 
     const userData = getItem("userData");
-    
+
     const logout = async () => {
         const authRequest = new AuthRequests();
         const res = await authRequest.logout();
@@ -34,6 +34,15 @@ const MyNavbar = (props: any): JSX.Element => {
         {item.flag}
     </span>
 
+    const AccountItem = () => {
+        return <DropdownButton className="account-button" title={`${userData.username}`}>
+            <Dropdown.Item onClick={() => navigate('/list/like')}>Likes</Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate(`/account/${userData.user}`)}>My Account</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
+        </DropdownButton>
+    }
+
     return <Navbar key={expand} expand={expand} className="shadow my-navbar" fixed="top">
         <Container>
             <Navbar.Brand onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
@@ -49,15 +58,11 @@ const MyNavbar = (props: any): JSX.Element => {
                 <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
                         {location.pathname !== '/forgot-password' && <>
-                            {logged && menuLogged.map((item: any, index: any) => <MenuItem key={index} {...item} />)}
+                            {logged && <>
+                                {menuLogged.map((item: any, index: any) => <MenuItem key={index} {...item} />)}
+                                <AccountItem />
+                            </>}
                             {!logged && menuUnlogged.map((item: any, index: any) => <MenuItem key={index} {...item} />)}
-                            {logged &&
-                                <DropdownButton className="account-button" title={`${userData.username}`}>
-                                    <Dropdown.Item onClick={() => navigate('/my-likes')}>Likes</Dropdown.Item>
-                                    <Dropdown.Divider />
-                                    <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
-                                </DropdownButton>
-                            }
                         </>}
                         {location.pathname === '/forgot-password' && <>
                             <h1 className="fs-4">Reset Password</h1>

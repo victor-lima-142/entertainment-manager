@@ -1,6 +1,6 @@
 import { Route } from 'react-router';
 import { Routes } from "react-router-dom"
-import { Auth, Games, Home, Movies, MyLikes, Series } from '../../pages';
+import { Account, Auth, Home, List } from '../../pages';
 import { InfoTitle } from '../';
 
 const MyRouter = (props: any) => {
@@ -9,13 +9,11 @@ const MyRouter = (props: any) => {
     const classes = (loading) ? (!getLoaderClass()) ? 'with-top-space' : '' : 'with-top-space';
     return <section className={classes}>
         <Routes>
-            <Route path='/login' element={<Auth { ...props} { ...{ isModal: false, navigateTo: null } } />} />
-            <Route path='/' element={<Home { ...props } />} />
-            <Route path='/series' element={<Series { ...props } />} />
-            <Route path='/movies' element={<Movies { ...props } />} />
-            <Route path='/games' element={<Games { ...props } />} />
-            <Route path='/my-likes' element={<MyLikes { ...props } />} />
-            <Route path='/title-info/:titleId' element={<InfoTitle { ...props } />} />
+            <Route path='/login' element={<Auth {...props} {...{ isModal: false, navigateTo: null }} />} />
+            <Route path='/' element={<Home {...props} />} />
+            <Route path='/list/:type?' element={<List {...props} />} />
+            <Route path='/title-info/:titleId' element={<InfoTitle {...props} />} />
+            <Route path='/account/:userId' element={<Account {...props} />} />
         </Routes>
     </section>
 }

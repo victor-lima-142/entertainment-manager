@@ -6,7 +6,6 @@ export { default as Router } from './router';
 export { default as ResetPassword } from './auth/resetPassword';
 export { default as Loader } from './loader';
 export { default as BreadCrumb } from './breadcrumb';
-export { default as List } from './list';
 export { default as InfoTitle } from './info';
 export { default as Modal } from './modal';
 export { default as GenreSlide } from './filter/genre-slide';

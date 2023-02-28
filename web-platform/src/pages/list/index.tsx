@@ -1,19 +1,45 @@
 import { Card, Carousel } from "react-bootstrap";
 import "./list.scss";
 import { BsStarFill } from 'react-icons/bs';
-import { Location, NavigateFunction } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getItem } from "../../config/storage";
-import { FilterList, Modal } from "../";
+import { BreadCrumb, FilterList, Loader, Modal } from "../../components";
 import React from "react";
-import { Auth } from "../../pages";
+import { Auth } from "..";
+import { breadcrumb } from "../../config/app.structure";
+import { TitleRequests } from "../../requests";
 
-const List = (prop: SeriesData): JSX.Element => {
-    const { list, setList, navigate, props } = prop;
+const List = (props: any): JSX.Element => {
+    const { navigate, loading, setLoading } = props;
     const [open, setOpen] = React.useState<boolean>(false);
+    const [genre, setGenre] = React.useState<string | null>(null);
+    const [list, setList] = React.useState<any>(null);
     const [properties, setProperties] = React.useState<any>(null);
-    const [originalList, setOriginalList] = React.useState<any>(list);
-    
+    const { type } = useParams();
+
     const getRate = (rate: number) => 5 * rate / 10;
+
+    const fetchData = React.useCallback(async () => {
+        try {
+            setLoading(true);
+            const titleRequest = new TitleRequests();
+            const res = await titleRequest.list({ type: type ? type : null, genre: genre ? genre : null });
+            const dataSet = [];
+            if (res?.status === 200){
+                for (const id in res?.data) {
+                    if (Object.prototype.hasOwnProperty.call(res?.data, id)) {
+                        const element = res?.data[id];
+                        dataSet.push(element);
+                    }
+                }
+            }
+            setList(dataSet);
+        } catch (e: any) {
+            console.log(e);
+        } finally {
+            setLoading(false)
+        }
+    }, [setList, setLoading, genre, type])
 
     const RenderRate = (rate: number) => {
         let rates: Array<number> = []
@@ -40,10 +66,13 @@ const List = (prop: SeriesData): JSX.Element => {
 
     const closeModalAlert = () => setOpen(false);
 
-    return <>
+    React.useEffect(() => {
+        fetchData()
+    }, [fetchData]);
 
-        <section className='image-back'>
-            <FilterList {...{ list: list, setList: setList, fieldsToSearch: ['name'], originalList: originalList, setOriginalList: setOriginalList }} { ...props} />
+    const List = () => {
+        return <section className='image-back'>
+            <FilterList {...props} {...{ genre, setGenre }} /> {/* {...{ list: list, setList: setList, fieldsToSearch: ['name'] }} */}
             <div className='list-titles-container'>
                 {list.map((title: any, index: any) => {
                     const { name, id, image, rate } = title;
@@ -62,15 +91,15 @@ const List = (prop: SeriesData): JSX.Element => {
                 <Modal align={'center'} size="sm" open={open} onClose={closeModalAlert} body={<Auth {...properties} />} />
             </div>
         </section>
+    }
+    
+    return <>
+        <BreadCrumb itens={breadcrumb.games} navigate={navigate} />
+        {
+            (loading || list === null) ? <Loader size="md" className={'mt-5 pt-5'} /> :
+                <List />
+        }
+
     </>
 }
-
-interface SeriesData {
-    list: Array<object>,
-    setList: any,
-    navigate: NavigateFunction,
-    location: Location,
-    props: any
-}
-
 export default List;
