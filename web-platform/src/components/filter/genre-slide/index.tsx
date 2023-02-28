@@ -28,12 +28,19 @@ const GenreSlide = (props: any) => {
                         if (a['name'] > b['name']) return 1;
                         return 0;
                     });
+                    setItem('genres', sorted);
                     const result = cutArray(sorted, quantityPerPage);
                     setGenres(result);
-                    setItem('genres', result);
                 }
             } else {
-                setGenres(getItem("genres"));
+                const genres = getItem('genres');
+                const sorted = genres.sort(function (a: any, b: any) {
+                    if (a['name'] < b['name']) return -1;
+                    if (a['name'] > b['name']) return 1;
+                    return 0;
+                });
+                const result = cutArray(sorted, quantityPerPage);
+                setGenres(result);
             }
         } catch (e: any) {
             console.log('erro', e);

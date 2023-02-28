@@ -82,13 +82,9 @@ img,
     background: $light-color;
     z-index: 15;
     padding: 3px 0px !important;
-    @media screen and (max-width: 800px) {
-        padding: 0px !important;
-    }
     .container {
         @media screen and (max-width: 800px) {
-            padding: 0px !important;
-            margin: 0px !important;
+            padding: 5px 25px !important;
         }
     }
 }
@@ -129,7 +125,6 @@ img,
             color: $dark-color !important;
         }
     }
-    
 }
 
 .account-button {
@@ -138,13 +133,26 @@ img,
         margin: 0px !important;
         padding: 0px !important;
     }
-    
+
     button {
         @media screen and (max-width: 992px) {
             text-align: left !important;
             margin: 0px !important;
             padding: 0px !important;
         }
-        
+    }
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    @media screen and (max-width: 750px) {
+        display: none !important;
+    }
+}
+
+html,
+body {
+    @media screen and (max-width: 800px) {
+        overflow-x: hidden; /* Hide horizontal scrollbar */
     }
 }

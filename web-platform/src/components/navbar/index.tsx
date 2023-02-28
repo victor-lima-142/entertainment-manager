@@ -52,7 +52,7 @@ const MyNavbar = (props: any): JSX.Element => {
             <Navbar.Offcanvas id={`navoffcanvas`} aria-labelledby={`offcanvas-title`} placement="start">
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title id={`offcanvas-title`}>
-                        Offcanvas
+                    <Image src={require('../../assets/img/logo.png')} className="universal-logo" />
                     </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>

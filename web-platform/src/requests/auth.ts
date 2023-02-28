@@ -36,6 +36,11 @@ class AuthRequests extends Requests {
         await this.post(endpoints.auth.resetForgotPassword, body);
         return this.res;
     }
+
+    async getData(body?: any) {
+        await this.get(endpoints.auth.find, body);
+        return this.res;
+    }
 }
 
 export default AuthRequests;

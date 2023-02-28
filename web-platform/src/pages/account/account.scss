@@ -1,0 +1,29 @@
+.account-container {
+    @media screen and (min-width: 1300px) {
+        padding: 35px 230px;
+    }
+    @media screen and (max-width: 1299px) {
+        padding: 35px 75px;
+    }
+    @media screen and (max-width: 950px) {
+        padding: 35px 25px;
+    }
+    @media screen and (max-width: 699px) {
+        padding: 35px 0px;
+    }
+
+    .row {
+        div {
+            .account-textarea-about {
+                font-size: 15px !important;
+            }
+            .account-photo {
+                width: 230px;
+                @media screen and (max-width: 768px) {
+                    margin-top: 20px;
+                    width: 200px;
+                }
+            }
+        }
+    }
+}
