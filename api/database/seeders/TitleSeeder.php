@@ -21,7 +21,7 @@ class TitleSeeder extends Seeder
         $imdb = new Imdb();
         $titles = [
             "The Last Of Us" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Drama',
                     'Suspense',
@@ -29,7 +29,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Grey's Anatomy" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Drama',
                     'Thriller',
@@ -37,14 +37,14 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Breaking Bad" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Drama',
                     'Thriller'
                 ]
             ],
             "Rick and Morty" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Comedy',
                     'Adventure',
@@ -52,7 +52,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "The Last Kingdom" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Medieval',
                     'Action',
@@ -61,7 +61,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Doctor House" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Drama',
                     'Romance',
@@ -69,7 +69,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Once Upon A Time" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Adventure',
                     'Suspense',
@@ -78,14 +78,14 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "The White Lotus" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Drama',
                     'Comedy'
                 ]
             ],
             "Loki" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Sci Fi',
                     'Science Fiction',
@@ -95,7 +95,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "WandaVision" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Sci Fi',
                     'Science Fiction',
@@ -105,7 +105,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Arrow" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Sci Fi',
                     'Science Fiction',
@@ -115,7 +115,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Scandal" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Drama',
                     'Comedy',
@@ -124,7 +124,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Peaky Blinders" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Action',
                     'Drama',
@@ -133,7 +133,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Vikings" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Action',
                     'Drama',
@@ -143,7 +143,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Friends" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Comedy',
                     'Romance',
@@ -151,7 +151,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Brooklyn Nine-Nine" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Comedy',
                     'Romance',
@@ -159,7 +159,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Orange Is The New Black" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Drama',
                     'Comedy',
@@ -168,7 +168,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Jurassic Park" => [
-                'type' => 'movie',
+                'type' => 'movies',
                 'genres' => [
                     'Adventure',
                     'Action',
@@ -177,7 +177,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "The Godfather" => [
-                'type' => 'movie',
+                'type' => 'movies',
                 'genres' => [
                     'Action',
                     'Drama',
@@ -185,14 +185,14 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "King Richard" => [
-                'type' => 'movie',
+                'type' => 'movies',
                 'genres' => [
                     'Drama',
                     'Thriller'
                 ]
             ],
             "Dune" => [
-                'type' => 'movie',
+                'type' => 'movies',
                 'genres' => [
                     'Action',
                     'Adventure',
@@ -202,7 +202,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Black Adam" => [
-                'type' => 'movie',
+                'type' => 'movies',
                 'genres' => [
                     'Action',
                     'Heroes',
@@ -211,7 +211,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "The Batman" => [
-                'type' => 'movie',
+                'type' => 'movies',
                 'genres' => [
                     'Action',
                     'Heroes',
@@ -221,7 +221,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Star Wars" => [
-                'type' => 'movie',
+                'type' => 'movies',
                 'genres' => [
                     'Action',
                     'Adventure',
@@ -231,7 +231,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Harry Potter" => [
-                'type' => 'movie',
+                'type' => 'movies',
                 'genres' => [
                     'Action',
                     'Adventure',
@@ -240,7 +240,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Pirates of the caribbean" => [
-                'type' => 'movie',
+                'type' => 'movies',
                 'genres' => [
                     'Action',
                     'Adventure',
@@ -249,7 +249,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "High School Musical" => [
-                'type' => 'movie',
+                'type' => 'movies',
                 'genres' => [
                     'Drama',
                     'Comedy',
@@ -258,7 +258,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Ben 10" => [
-                'type' => 'serie',
+                'type' => 'series',
                 'genres' => [
                     'Action',
                     'Adventure',
@@ -267,14 +267,14 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Uncharted" => [
-                'type' => 'game',
+                'type' => 'games',
                 'genres' => [
                     'Action',
                     'Adventure'
                 ]
             ],
             "Grand Theft Auto" => [
-                'type' => 'game',
+                'type' => 'games',
                 'genres' => [
                     'Action',
                     'Adventure',
@@ -282,7 +282,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "GTA" => [
-                'type' => 'game',
+                'type' => 'games',
                 'genres' => [
                     'Action',
                     'Adventure',
@@ -290,7 +290,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Assassin's Creed" => [
-                'type' => 'game',
+                'type' => 'games',
                 'genres' => [
                     'Action',
                     'Adventure',
@@ -300,7 +300,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Call Of Duty" => [
-                'type' => 'game',
+                'type' => 'games',
                 'genres' => [
                     'Action',
                     'Adventure',
@@ -309,14 +309,14 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Pro Evolution Soccer" => [
-                'type' => 'game',
+                'type' => 'games',
                 'genres' => [
                     'Action',
                     'Sport',
                 ]
             ],
             "Pay Day" => [
-                'type' => 'game',
+                'type' => 'games',
                 'genres' => [
                     'Action',
                     'Adventure',
@@ -324,7 +324,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Far Cry" => [
-                'type' => 'game',
+                'type' => 'games',
                 'genres' => [
                     'Action',
                     'Adventure',
@@ -333,14 +333,14 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "League Of Legends" => [
-                'type' => 'game',
+                'type' => 'games',
                 'genres' => [
                     'Action',
                     'Adventure'
                 ]
             ],
             "Batman Arkham" => [
-                'type' => 'game',
+                'type' => 'games',
                 'genres' => [
                     'Action',
                     'Heroes',
@@ -350,7 +350,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "Battlefield" => [
-                'type' => 'game',
+                'type' => 'games',
                 'genres' => [
                     'Action',
                     'Adventure',
@@ -359,7 +359,7 @@ class TitleSeeder extends Seeder
                 ]
             ],
             "NBA 2k" => [
-                'type' => 'game',
+                'type' => 'games',
                 'genres' => [
                     'Adventure'
                 ]

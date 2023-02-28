@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class Title extends Model
@@ -40,54 +42,43 @@ class Title extends Model
         return $this->belongsTo('GenreTitle', 'title_id');
     }
 
-
-    static public function getWithWhere(int|array $id = null, string $type = null)
+    static public function getLikeds(Request $request)
     {
-        $titles = DB::table('titles')
-            ->join('genre_titles', 'genre_titles.title_id', '=', 'titles.id')
-            ->join('genres', 'genres.id', '=', 'genre_titles.genre_id')
-            ->select(['titles.id as title_id', 'titles.name as title_name', 'titles.image', 'titles.plot', 'titles.rate as title_rate', 'titles.type', 'genres.name as genre_name', 'genres.rate as genre_rate']);
+        $liked = Like::where('user_id', $request->user)->get();
+        $titles = Title::all();
+        $genres = Genre::all();
+        $genreTitles = GenreTitle::all();
 
-        if ($id === null) {
-            if ($type) {
-                $response = $titles->where('type', '=', $type)->get();
+        $genreAux = $result = [];
+
+        foreach ($liked as $likedTitle) {
+            foreach ($genreTitles as $genreTitle) {
+                foreach ($titles as $title) {
+                    if ($likedTitle->title_id === $title->id && $genreTitle->id === $likedTitle->title_id) {
+                        $result[$title->id] = $title;
+                        $result[$title->id]['genres'][] = $genre->name;
+                        foreach ($genres as $genre) {
+                            if ($genre->id === $genreTitle->genre_id) {
+                                $genreAux[$genreTitle->title_id] = $genre->name;
+                            }
+                        }
+                    }
+                }
+                
             }
-            $response = $titles->get();
-        } else {
-            $ids = gettype($id) === 'int' ? [$id] : $id;
-            if ($type) {
-                $response = $titles->where('type', '=', $type)->whereIn('id', $ids)->get();
-            }
-            $response = $titles->whereIn('id', $ids)->get();
+            
         }
-
-        $dados = [];
-        $genresOfTitle = [];
-        foreach ($response as $value) {
-            $id = $value->title_id;
-            $genresOfTitle[$id] = [];
-            $dados[$id] = [];
+        
+        if ($request->genre) {
+            $result = array_filter($result, function ($title) use ($request) {
+                return in_array($request->genre, $title['genres']);
+            });
         }
-        foreach ($response as $data) {
-            $id = $data->title_id;
-            array_push($genresOfTitle[$id], $data->genre_name);
-            $dados[$id] = [];
-            $dado = [
-                'name' => $data->title_name,
-                'id' => $data->title_id,
-                'image' => $data->image,
-                'plot' => $data->plot,
-                'rate' => $data->title_rate,
-                'genres' => $genresOfTitle[$id]
-            ];
-            array_push($dados[$id], $dado);
+        if ($request->id) {
+            $result = array_filter($result, function ($title) use ($request) {
+                return $title->id == $request->id;
+            });
         }
-        $response2 = [];
-
-        foreach ($dados as $dado) {
-            array_push($response2, $dado[0]);
-        }
-
-        return $response2;
+        return $result;
     }
 }

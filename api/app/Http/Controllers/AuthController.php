@@ -13,9 +13,12 @@ class AuthController extends Controller
     public function verifyUser(Request $request): JsonResponse
     {
         try {
+            $check = self::checkRequest(['password', 'email', 'username'], $request);
+            if (!$check)
+                return response()->json($check, 404);
             $user = User::where("username", $request->username)->orWhere("email", $request->email)->first();
             if (!$user)
-                return response()->json([], 404);
+                return response()->json(['message' => 'User not found'], 404);
 
             return response()->json(["user" => $user->id], 200);
         } catch (\Exception $e) {

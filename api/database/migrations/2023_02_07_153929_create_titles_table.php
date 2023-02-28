@@ -21,7 +21,7 @@ return new class extends Migration
             $table->longText('plot')->nullable();
             $table->integer('rate')->nullable();
             $table->integer('evaluators')->nullable();
-            $table->enum('type', ['game', 'book', 'serie', 'movie'])->default('serie');
+            $table->enum('type', ['games', 'books', 'series', 'movies'])->default('series');
             $table->timestamps();
         });
     }
