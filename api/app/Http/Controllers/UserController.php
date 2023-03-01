@@ -54,14 +54,13 @@ class UserController extends Controller
     {
         try {
             $user = self::checkUser($request->user);
-            $people = self::checkPeople($request->user);
             $token = self::checkToken($request->user);
             return response()->json([
                 "username" => $user->username,
-                "people" => $people->id,
                 "token" => $token->token,
                 "user" => $user->id,
-                "email" => $user->email
+                "email" => $user->email,
+                "register_date" => $user->created_at
             ], 200);
         } catch (\Exception $e) {
             return response()->json(["message" => "Internal server Error:" . $e->getMessage()], 500);
@@ -89,7 +88,7 @@ class UserController extends Controller
     public function edit(Request $request): JsonResponse
     {
         try {
-            $checkRequest = self::checkRequest(["username", "email", "password", "level", "user"], $request);
+            $checkRequest = self::checkRequest(["username", "email", "user"], $request);
             if ($checkRequest !== true) {
                 return $checkRequest;
             }
@@ -100,7 +99,11 @@ class UserController extends Controller
 
             $checkUser->update($request->except(["user", "token"]));
             $checkUser->save();
-            return response()->json(["message" => "User data updated."], 200);
+            return response()->json([
+                'username' => $checkUser->username,
+                'email' => $checkUser->email,
+                "register_date" => $checkUser->created_at
+            ], 200);
         } catch (\Exception $e) {
             return response()->json(["message" => "Internal server Error:" . $e->getMessage()], 500);
         }

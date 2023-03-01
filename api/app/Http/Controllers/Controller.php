@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
 use App\Models\Like;
-use App\Models\People;
-use App\Models\Position;
 use App\Models\Title;
 use App\Models\Token;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    static protected function checkRequest(array $required_fields, Request $request)
+    static protected function checkRequest(array $required_fields, Request $request): JsonResponse | bool
     {
         foreach ($required_fields as $field) {
             if (!$request[$field]) {

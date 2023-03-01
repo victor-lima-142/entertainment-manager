@@ -1,18 +1,13 @@
 import React from 'react';
 import { AuthRequests } from '../../requests';
-import { Loader } from '../../components';
-import { Button, Col, Container, Form, InputGroup, Row } from 'react-bootstrap';
-import { BsPersonBadge, BsInfoSquareFill } from 'react-icons/bs';
-import { SiGmail } from 'react-icons/si';
-import { MdDateRange } from 'react-icons/md';
-import { MDBContainer } from "mdb-react-ui-kit";
-
+import { AccountSecurity, AccountSettings, Loader, AccountPhotoAbout } from '../../components';
 import "./account.scss";
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Account = (props: any) => {
     const { loading, setLoading } = props;
     const [dataSet, setDataSet] = React.useState<any>(null);
-    const [dataUpdate, setDataUpdate] = React.useState<any>({username: '', email: ''});
+    const [dataUpdate, setDataUpdate] = React.useState<any>({ username: '', email: '' });
 
     const fetchData = React.useCallback(async () => {
         try {
@@ -21,7 +16,7 @@ const Account = (props: any) => {
             const res = await authRequests.getData();
             if (res?.status === 200) {
                 setDataSet(res?.data);
-                setDataUpdate({username: res?.data?.username, email: res?.data?.email, })
+                setDataUpdate({ username: res?.data?.username, email: res?.data?.email, })
             }
         } catch (e: any) {
             console.log(e)
@@ -37,46 +32,15 @@ const Account = (props: any) => {
     if (loading || !dataSet)
         return <Loader fullScreen />
 
-    const { register_date } = dataSet;
-
-    return <main className='image-back'>
-        <Container className='account-container'>
+    return <main className='bg-dark position-absolute w-100 h-100'>
+        <Container className='bg-light shadow mt-5'>
             <Row>
-                <Col md={8} lg={8} sm={12}>
-                    <InputGroup className="mb-3">
-                        <InputGroup.Text children={<BsPersonBadge />} />
-                        <Form.Control type='text' required value={dataUpdate.username} onChange={(e: any) => {
-                            setDataUpdate({username: e.target.value, email: dataUpdate?.email});
-                            console.log(dataUpdate);
-                        }} />
-                    </InputGroup>
-
-                    <InputGroup className="mb-3">
-                        <InputGroup.Text children={<SiGmail />} />
-                        <Form.Control type='text' required value={dataUpdate.email} onChange={(e: any) => {
-                            setDataUpdate({email: e.target.value, username: dataUpdate?.username });
-                            console.log(dataUpdate);
-                        }} />
-                    </InputGroup>
-
-                    <InputGroup className="mb-3">
-                        <InputGroup.Text children={<BsInfoSquareFill />} />
-                        <Form.Control as="textarea" className='account-textarea-about' required aria-label="With textarea" />
-                    </InputGroup>
-
-                    <InputGroup className="mb-3">
-                        <InputGroup.Text children={<MdDateRange />} />
-                        <Form.Control disabled value={register_date} />
-                    </InputGroup>
-
-                    <Button variant='outline-light'>
-                        Save
-                    </Button>
+                <Col sm={12} md={7} lg={7}>
+                    <AccountSettings {...{ setDataUpdate, dataSet, dataUpdate, setDataSet }} {...props} />
+                    <AccountSecurity {...{ setDataUpdate, dataSet, dataUpdate, setDataSet }} {...props} />
                 </Col>
-                <Col md={4} lg={4} sm={12}>
-                    <section className='text-center align-center'>
-                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" className="rounded-circle shadow-4 account-photo" alt="Avatar" />
-                    </section>
+                <Col sm={12} md={5} lg={5} className={"border-start"}>
+                    <AccountPhotoAbout />
                 </Col>
             </Row>
         </Container>

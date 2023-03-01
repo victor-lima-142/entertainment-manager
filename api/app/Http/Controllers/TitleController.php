@@ -10,42 +10,37 @@ use Illuminate\Http\Request;
 
 class TitleController extends Controller
 {
-
     public function list(Request $request): JsonResponse
     {
-        if ($request->type !== 'like') {
-            $titles = Title::all();
-            $genres = Genre::all();
-            $genreTitles = GenreTitle::all();
-            $genreAux = $result = [];
-            foreach ($genreTitles as $genreTitle) {
-                foreach ($genres as $genre) {
-                    if ($genre->id === $genreTitle->genre_id) {
-                        $genreAux[$genreTitle->title_id][] = $genre->name;
-                    }
+        $titles = Title::all();
+        $genres = Genre::all();
+        $genreTitles = GenreTitle::all();
+        $genreAux = $result = [];
+        foreach ($genreTitles as $genreTitle) {
+            foreach ($genres as $genre) {
+                if ($genre->id === $genreTitle->genre_id) {
+                    $genreAux[$genreTitle->title_id][] = $genre->name;
                 }
             }
-            foreach ($titles as $title) {
-                $result[$title->id] = $title;
-                $result[$title->id]['genres'] = $genreAux[$title->id];
-            }
-            if ($request->type) {
-                $result = array_filter($result, function ($title) use ($request) {
-                    return $title->type == $request->type;
-                });
-            }
-            if ($request->genre) {
-                $result = array_filter($result, function ($title) use ($request) {
-                    return in_array($request->genre, $title['genres']);
-                });
-            }
-            if ($request->id) {
-                $result = array_filter($result, function ($title) use ($request) {
-                    return $title->id == $request->id;
-                });
-            }
-        } else {
-            $result = Title::getLikeds($request);
+        }
+        foreach ($titles as $title) {
+            $result[$title->id] = $title;
+            $result[$title->id]['genres'] = $genreAux[$title->id];
+        }
+        if ($request->type) {
+            $result = array_filter($result, function ($title) use ($request) {
+                return $title->type == $request->type;
+            });
+        }
+        if ($request->genre) {
+            $result = array_filter($result, function ($title) use ($request) {
+                return in_array($request->genre, $title['genres']);
+            });
+        }
+        if ($request->id) {
+            $result = array_filter($result, function ($title) use ($request) {
+                return $title->id == $request->id;
+            });
         }
         return response()->json($result, 200);
 

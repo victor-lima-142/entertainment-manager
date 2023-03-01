@@ -1,29 +1,61 @@
 .account-container {
     @media screen and (min-width: 1300px) {
-        padding: 35px 230px;
-    }
-    @media screen and (max-width: 1299px) {
-        padding: 35px 75px;
-    }
-    @media screen and (max-width: 950px) {
-        padding: 35px 25px;
-    }
-    @media screen and (max-width: 699px) {
-        padding: 35px 0px;
+        padding-left: 230px;
+        padding-right: 230px;
     }
 
-    .row {
-        div {
-            .account-textarea-about {
-                font-size: 15px !important;
-            }
-            .account-photo {
-                width: 230px;
-                @media screen and (max-width: 768px) {
-                    margin-top: 20px;
-                    width: 200px;
-                }
-            }
-        }
+    @media screen and (max-width: 1299px) {
+        padding-left: 75px;
+        padding-right: 75px;
+    }
+
+    @media screen and (max-width: 950px) {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    @media screen and (max-width: 699px) {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+.photo-about-container {
+    @media screen and (min-width: 1300px) {
+        padding-right: 17px;
+    }
+
+    @media screen and (max-width: 1299px) {
+        padding-right: 15px;
+    }
+
+    padding-left: 11px;
+
+    @media screen and (max-width: 950px) {
+        padding-right: 10px;
+    }
+
+    @media screen and (max-width: 699px) {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+}
+
+.photo-about-image {
+    border-radius: 50%;
+
+    @media screen and (min-width: 1300px) {
+        width: 230px;
+        height: 230px;
+    }
+
+    @media screen and (min-width: 700px) {
+        width: 200px;
+        height: 200px;
+    }
+
+    @media screen and (max-width: 699px) {
+        width: 160px;
+        height: 160px;
     }
 }

@@ -11,3 +11,6 @@ export { default as Modal } from './modal';
 export { default as GenreSlide } from './filter/genre-slide';
 export { default as SearchTitle } from './filter/search-title';
 export { default as FilterList } from './filter';
+export { default as AccountSettings } from './account/settings';
+export { default as AccountSecurity } from './account/security';
+export { default as AccountPhotoAbout } from './account/photo-about';

@@ -23,7 +23,12 @@ const List = (props: any): JSX.Element => {
         try {
             setLoading(true);
             const titleRequest = new TitleRequests();
-            const res = await titleRequest.list({ type: type ? type : null, genre: genre ? genre : null });
+            let res: any = null;
+            if (type !== 'like')
+                res = await titleRequest.list({ type: type ? type : null, genre: genre ? genre : null });
+            else
+                res = await titleRequest.like({ type: type ? type : null, genre: genre ? genre : null });
+            
             const dataSet = [];
             if (res?.status === 200){
                 for (const id in res?.data) {

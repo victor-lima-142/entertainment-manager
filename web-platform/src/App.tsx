@@ -11,7 +11,16 @@ const App = (): JSX.Element => {
     const [currentPath, setCurrentPath] = React.useState<string | null>(null);
     const [logged, setLogged] = React.useState<boolean>(false);
     const [loading, setLoading] = React.useState<boolean>(false);
+    const [userData, setUserData] = React.useState<any>(null);
+
     const _setLogged = () => setLogged(logged ? false : true);
+
+    React.useEffect(() => {
+        const usD = getItem("userData");
+        if (usD) {
+            setUserData(usD);
+        }
+    }, [setUserData])
 
     React.useEffect(() => {
         setCurrentPath(location.pathname.replace('/', ''));
@@ -22,13 +31,14 @@ const App = (): JSX.Element => {
         }
     }, [location]);
 
-
     if (currentPath === null)
         return <></>;
 
+    let props = { ...{ navigate, location, logged, _setLogged, loading, setLoading, userData, setUserData } };
+
     return <>
-        <Navigation {...{ navigate, location, logged, _setLogged, loading, setLoading }} />
-        <Router {...{ navigate, location, logged, _setLogged, loading, setLoading }} />
+        <Navigation { ...props }  />
+        <Router {...props} />
     </>;
 }
 

@@ -4,7 +4,7 @@ const Login = (props: any) => {
     const { _setAuthMode, username, _setUsername, login, password, _setPassword, setAuthMode } = props;
 
     const forgotMyPass = () => setAuthMode('resetPassword');
-
+    React
     return <>
         <h1>Login</h1>
         <Form onSubmit={() => void (0)}>
