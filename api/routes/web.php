@@ -13,10 +13,6 @@
 */
 
 /** UNAUTHENTICATED ROUTES */
-
-/**
- * Auth routes
- */
 $router->group(["prefix" => "auth"], function () use ($router) {
     $router->post("/register", "UserController@register");
     $router->post("/verifyUser", "AuthController@verifyUser");
@@ -26,19 +22,23 @@ $router->group(["prefix" => "auth"], function () use ($router) {
     $router->post('/resetForgotPassword', 'AuthMailController@resetForgotPassword');
 });
 
-/**
- * Titles routes
- */
 $router->group(["prefix" => "title"], function () use ($router) {
     $router->get("/list", "TitleController@list");
 });
 
-/**
- * Genres routes
- */
 $router->group(["prefix" => "genre"], function () use ($router) {
     $router->get("/list", "GenreController@list");
 });
+$router->get('/', function () use ($router) {
+    return response()->json(["Hello World"],200);
+});
+
+
+
+
+
+
+
 
 
 /** AUTHENTICATED ROUTES */

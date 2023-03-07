@@ -1,20 +1,19 @@
 import { Card } from "@rneui/themed";
-import axios from "axios";
 import React from "react";
-import { View, Text, ScrollView, ActivityIndicator } from "react-native";
+import { View, Text, ScrollView, ActivityIndicator, Image, StyleSheet, StatusBar } from "react-native";
+import { TitleRequests } from "../../request";
 
-export default function Home(): JSX.Element {
-    const [dataList, setDataList] = React.useState<any>(null);
+const Home = (): JSX.Element => {
+    const [dataList, setDataList] = React.useState(null);
     const fetchData = React.useCallback(async () => {
         try {
-            const res = await axios.request({
-                method: "GET",
-                url: "/title/list"
-            });
-            if (res?.data) {
+            const titleRequests = new TitleRequests();
+            const res = await titleRequests.list();
+            if (res?.status === 200) {
                 setDataList(res?.data);
+                setTimeout(() => console.log(dataList), 2500)
             }
-        } catch (error: any) {
+        } catch (error) {
             console.log('erro', error);
         }
     }, []);
@@ -28,16 +27,19 @@ export default function Home(): JSX.Element {
     }
 
     return <ScrollView>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map((number: number, index: any) => {
-            return <Card containerStyle={{ borderRadius: 5 }} key={index}>
-                <Card.Title>Card Title {number}</Card.Title>
+        {Object.values(dataList).map((title: any, index: any) => {
+            const { name, rate } = title;
+            return (<Card containerStyle={{ borderRadius: 10 }} key={index}>
+                <Card.Title>Card Title {name}</Card.Title>
                 <Card.Divider />
                 <View>
                     <Text>
-                        Trying a text
+                        Trying a text {rate}
                     </Text>
                 </View>
-            </Card>
+            </Card>);
         })}
     </ScrollView>
 }
+
+export default Home;
